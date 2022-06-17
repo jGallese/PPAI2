@@ -24,16 +24,33 @@ namespace pruebaPPAI.Entidades
 
         public List<RecursoTecnologico> ListaRecursosTecnologicos { get; set; }
 
-        public CentroInvestigación(string nombre, string sigla, string direccion, string edificio, int piso, int coordenadas, 
-            string telefono, string correo, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento, 
+        public CentroInvestigación(string nombre, string sigla, string direccion, string edificio, int piso, int coordenadas,
+            string telefono, string correo, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento,
             DateTime fechaAlta, DateTime tiempoAntelacionReserva, DateTime fechaBaja, string motivoBaja)
         {
             this.Nombre = nombre;
-            this.sigla =sigla;
-            this.direccion =direccion;
+            this.sigla = sigla;
+            this.direccion = direccion;
             this.edificio = edificio;
+            this.piso = piso;
+            this.coordenadas = coordenadas;
+            this.telefonoContacto = telefono;
+            this.correoElectronico = correo;
+            this.numeroResolucion = numeroResolucion;
+            this.fechaResolucionCreacion = fechaResolucionCreacion;
+            this.reglamento = reglamento;
+            this.fechaAlta = fechaAlta;
+            this.tiempoAntelacionReserva = tiempoAntelacionReserva;
+            this.fechaBaja = fechaBaja;
+            this.motivoBaja = motivoBaja;
+            this.ListaRecursosTecnologicos = new List<RecursoTecnologico>();
+
 
         }
 
+        public void agregarRT(RecursoTecnologico recurso)
+        {
+            this.ListaRecursosTecnologicos.Add(recurso);
+        }
     }
 }
