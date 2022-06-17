@@ -44,5 +44,15 @@ namespace pruebaPPAI
 
             return listaRecursosDelTipo;
         }
+
+        public void agruparPorCI(List<RecursoTecnologico> lista)
+        {
+            //List<>
+            List<Tuple<CentroInvestigación, List<RecursoTecnologico>>> matrizCentros = new List<Tuple<CentroInvestigación, List<RecursoTecnologico>>>();
+            foreach (RecursoTecnologico rt in lista)
+            {
+                //rt. VER COMO SE PUEDE AGRUPAR LA LISTA DE RECURSOS POR CENTRO DE INVESTIGACION
+            }
+        }
     }
 }

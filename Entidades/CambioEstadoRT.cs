@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace pruebaPPAI.Entidades
 {
-    internal class CambioEstadoRT
+    public class CambioEstadoRT
     {
         public DateTime FechaHoraDesde { get; set; }
         public DateTime? FechaHoraHasta { get; set; }
         public Estado Estado { get; set; }
-        public CambioEstadoRT(DateTime fechaHoraDesde, DateTime fechaHoraHasta, Estado estado)
+        public CambioEstadoRT(DateTime fechaHoraDesde, Estado estado)
         {
             this.FechaHoraDesde = fechaHoraDesde;
-            this.FechaHoraHasta = fechaHoraHasta;
+            this.FechaHoraHasta = null;
             this.Estado = estado;
         }
 

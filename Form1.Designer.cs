@@ -82,7 +82,7 @@
             this.dgv_TiposRecursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TiposRecursos.Size = new System.Drawing.Size(483, 225);
             this.dgv_TiposRecursos.TabIndex = 1;
-            this.dgv_TiposRecursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv_TiposRecursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarTipoRecurso);
             // 
             // panel2
             // 
@@ -115,7 +115,7 @@
             this.dgv_Recursos.RowTemplate.Height = 33;
             this.dgv_Recursos.Size = new System.Drawing.Size(1235, 211);
             this.dgv_Recursos.TabIndex = 0;
-            this.dgv_Recursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Recursos_CellContentClick);
+            this.dgv_Recursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarRT);
             // 
             // Form1
             // 

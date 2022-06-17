@@ -15,16 +15,25 @@ namespace pruebaPPAI.Entidades
         public String telefonoContacto { get; set; }
         public String correoElectronico { get; set; }
         public int numeroResolucion { get; set; }
-        public DateTime fechaREsolucionCreacion { get; set; }
+        public DateTime fechaResolucionCreacion { get; set; }
         public String reglamento { get; set; }
-        public String caracteristicasGenerales { get; set; }
         public DateTime fechaAlta { get; set; }
-        public int tiempoAntelacionReserva { get; set; }
+        public DateTime tiempoAntelacionReserva { get; set; }
         public DateTime fechaBaja { get; set; }
         public String motivoBaja { get; set; }
 
+        public List<RecursoTecnologico> ListaRecursosTecnologicos { get; set; }
 
+        public CentroInvestigación(string nombre, string sigla, string direccion, string edificio, int piso, int coordenadas, 
+            string telefono, string correo, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento, 
+            DateTime fechaAlta, DateTime tiempoAntelacionReserva, DateTime fechaBaja, string motivoBaja)
+        {
+            this.Nombre = nombre;
+            this.sigla =sigla;
+            this.direccion =direccion;
+            this.edificio = edificio;
 
+        }
 
     }
 }

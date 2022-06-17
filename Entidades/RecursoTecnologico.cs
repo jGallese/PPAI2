@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pruebaPPAI.Entidades
 {
-    internal class RecursoTecnologico
+    public class RecursoTecnologico
     {
         //Propiedades
         public int numeroRT { get; set; }
@@ -59,11 +59,11 @@ namespace pruebaPPAI.Entidades
             CambioEstadoRT actual = null;
             foreach (CambioEstadoRT cambioEstado in this.ListaCambioEstadosRT)
             {
-                
+
                 if (cambioEstado.EsActual())
                 {
                     actual = cambioEstado;
-                    
+
                 }
             }
             if (actual.EsReservable())
@@ -74,10 +74,18 @@ namespace pruebaPPAI.Entidades
             {
                 return false;
             }
-           
-
-            
         }
+
+
+        public bool estaEnMiCI()
+            {
+                /*TODO: devuelve true si el cientifico logueado pertenece al centro de investigacion 
+                    que contiene al recurso tecnologico seleccionado
+                 */
+                return true;
+            }
+            
+        
 
     }
 
