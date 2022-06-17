@@ -1,6 +1,6 @@
 ﻿namespace pruebaPPAI
 {
-    partial class Form1
+    partial class InterfazRegistrarClases
     {
         /// <summary>
         ///  Required designer variable.
@@ -67,7 +67,7 @@
             this.btn_reg_reserva.TabIndex = 0;
             this.btn_reg_reserva.Text = "Registrar Reserva";
             this.btn_reg_reserva.UseVisualStyleBackColor = true;
-            this.btn_reg_reserva.Click += new System.EventHandler(this.opcionRegistrarReserva);
+            this.btn_reg_reserva.Click += new System.EventHandler(this.opcReservarTurno);
             // 
             // dgv_TiposRecursos
             // 

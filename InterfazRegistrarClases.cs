@@ -2,20 +2,20 @@ using pruebaPPAI.Entidades;
 
 namespace pruebaPPAI
 {
-    public partial class Form1 : Form
+    public partial class InterfazRegistrarClases : Form
     {
         public List<TipoRecurso> listaTR { get; set; }
         private List<RecursoTecnologico> ListaRecs { get; set; }
 
-        private gestorReservarTurno ges;
-        public Form1()
+        private gestorRegistrarTurno ges;
+        public InterfazRegistrarClases()
         {
             InitializeComponent();
-            ges = new gestorReservarTurno(); 
+            ges = new gestorRegistrarTurno(); 
             ListaRecs = new List<RecursoTecnologico>();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) //METODO HABILITAR PANTALLA, SI SE CAMBIA EL NOMBRE SE ROMPE
         {
             dgv_TiposRecursos.AutoGenerateColumns = false;
             dgv_TiposRecursos.MultiSelect = false;
@@ -25,7 +25,7 @@ namespace pruebaPPAI
         }
 
 
-        private void opcionRegistrarReserva(object sender, EventArgs e)
+        private void opcReservarTurno(object sender, EventArgs e)
         {//obtener lista de tipos de recursos, muestra y solicita que se seleccione un TR
             listaTR = ges.opcReservarTurno(this);
             dgv_TiposRecursos.DataSource = listaTR;
@@ -42,13 +42,14 @@ namespace pruebaPPAI
 
 
             this.ListaRecs = ges.buscarRTsDelTipo();
-            dgv_Recursos.DataSource = ListaRecs;
+            //dgv_Recursos.DataSource = ListaRecs;
             
 
         }
 
         private void solicitarSeleccionTR()
         {
+            //Muestra ventana emergente que pide seleccion de un tipo de recurso
             MessageBox.Show("Por favor, seleccione un Tipo de Recurso");
         }
 

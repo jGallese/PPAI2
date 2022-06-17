@@ -10,7 +10,7 @@ namespace pruebaPPAI.Entidades
     {
         public DateTime FechaHoraDesde { get; set; }
         public DateTime FechaHoraHasta { get; set; }
-        public Usuario Usuario { get; set; }
+        public Usuario? Usuario { get; set; }
     
         public Sesion(DateTime fechaHoraDesde, DateTime fechaHoraHasta, Usuario usuario)
         {

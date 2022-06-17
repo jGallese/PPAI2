@@ -14,6 +14,8 @@ namespace pruebaPPAI.Entidades
         public int coordenadas { get; set; }
         public String telefonoContacto { get; set; }
         public String correoElectronico { get; set; }
+        public String caracteristicasGenerales { get; set; }
+
         public int numeroResolucion { get; set; }
         public DateTime fechaResolucionCreacion { get; set; }
         public String reglamento { get; set; }
@@ -27,7 +29,7 @@ namespace pruebaPPAI.Entidades
         public List<AsignacionCientifico> AsignacionCientificos { get; set; }
 
         public CentroInvestigación(string nombre, string sigla, string direccion, string edificio, int piso, int coordenadas,
-            string telefono, string correo, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento,
+            string telefono, string correo, string caracteristicasGrales, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento,
             DateTime fechaAlta, DateTime tiempoAntelacionReserva, DateTime fechaBaja, string motivoBaja)
         {
             this.Nombre = nombre;
@@ -38,6 +40,7 @@ namespace pruebaPPAI.Entidades
             this.coordenadas = coordenadas;
             this.telefonoContacto = telefono;
             this.correoElectronico = correo;
+            this.caracteristicasGenerales = caracteristicasGrales;
             this.numeroResolucion = numeroResolucion;
             this.fechaResolucionCreacion = fechaResolucionCreacion;
             this.reglamento = reglamento;

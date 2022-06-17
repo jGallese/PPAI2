@@ -8,16 +8,16 @@ namespace pruebaPPAI.Entidades
 {
     public class AsignacionCientifico
     {
-        public DateTime FechaHoraDesde { get; set; }
-        public DateTime FechaHoraHasta { get; set; }
+        public DateTime FechaDesde { get; set; }
+        public DateTime FechaHasta { get; set; }
         public PersonalCientifico PersonalCientifico { get; set; }
 
         public List<Turno> Turnos { get; set; }
 
-        public AsignacionCientifico(DateTime fechaHoraDesde, DateTime fechaHoraHasta, PersonalCientifico personalCientifico)
+        public AsignacionCientifico(DateTime fechaDesde, DateTime fechaHasta, PersonalCientifico personalCientifico)
         {
-            this.FechaHoraDesde = fechaHoraDesde;
-            this.FechaHoraHasta = fechaHoraHasta;
+            this.FechaDesde = fechaDesde;
+            this.FechaHasta = fechaHasta;
             this.PersonalCientifico = personalCientifico;
             this.Turnos = new List<Turno>();
 

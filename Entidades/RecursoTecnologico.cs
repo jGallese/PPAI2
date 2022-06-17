@@ -11,18 +11,21 @@ namespace pruebaPPAI.Entidades
         //Propiedades
         public int numeroRT { get; set; }
         public DateTime fechaAlta { get; set; }
-        public Image imagenes { get; set; }
+        public List<Image> imagenes { get; set; }
         public DateTime periodicidadMantenimientoPrev { get; set; }
         public DateTime duracionMantPrev { get; set; }
-        public TimeOnly fraccionHorariaTurno { get; set; }
+        public TimeOnly fraccionHorariosTurnos { get; set; }
 
         public TipoRecurso tipoRecurso { get; set; }
 
         public Modelo modeloRT { get; set; }
-        public List<Mantenimiento> ListaMantenimientos { get; set; }
+        public List<Mantenimiento>? ListaMantenimientos { get; set; }
 
         public List<Turno> ListaTurnos { get; set; }
         public List<CambioEstadoRT> ListaCambioEstadosRT { get; set; }
+
+        private CentroInvestigación centroInv { get; set; }
+
 
         //Constructor
 
@@ -30,10 +33,10 @@ namespace pruebaPPAI.Entidades
         {
             this.numeroRT = numeroRT;
             this.fechaAlta = fechaAlta;
-            this.imagenes = imagenes;
+            this.imagenes = new List<Image>();
             this.periodicidadMantenimientoPrev = periodicidadMantenimientoPrev;
             this.duracionMantPrev = duracionMantPrev;
-            this.fraccionHorariaTurno = fraccionHorariaTurno;
+            this.fraccionHorariosTurnos = fraccionHorariaTurno;
             this.tipoRecurso = tipoRecurso;
             this.modeloRT = modeloRT;
             this.ListaMantenimientos = new List<Mantenimiento>();
@@ -76,6 +79,20 @@ namespace pruebaPPAI.Entidades
             }
         }
 
+        public String getNombreCI(baseDeDatos bdd)
+        {
+            foreach (CentroInvestigación centro in bdd.ListaCentros)
+            {
+                foreach (RecursoTecnologico recurso  in centro.ListaRecursosTecnologicos)
+                {
+                    if (this.Equals(recurso))
+                    {
+                        return centro.Nombre;
+                    }
+                }
+            }
+            return "";
+        }
 
         public bool estaEnMiCI()
             {

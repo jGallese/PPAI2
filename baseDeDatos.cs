@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace pruebaPPAI
 {
-    internal class baseDeDatos
+    public class baseDeDatos
     {
         public List<TipoRecurso> listaTiposRecursos;
         public List<RecursoTecnologico> listaRecursosTecnologicos { get; set; }
         public List<Estado> listaEstados { get; set; }
         public List<Modelo> listaModelos { get; set; }
+
+        public List<CentroInvestigación> ListaCentros { get; set; }
+
         //tiporecurso tr = new("1", "asv");
 
         public baseDeDatos()

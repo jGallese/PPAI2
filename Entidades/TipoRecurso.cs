@@ -11,7 +11,7 @@
             this.Descripcion = desc; 
         }
 
-        public override string ToString()
+        public string GetTipoRecurso()
         {
             return "Tipo Recurso:" + this.Nombre + ". Descripcion:" + this.Descripcion;
         }

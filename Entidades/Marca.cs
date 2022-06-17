@@ -11,6 +11,10 @@ namespace pruebaPPAI.Entidades
         public string Nombre { get; set; }
         public List<Modelo> modelos { get; set; }
 
-
+        public Marca(string nombre)
+        {
+            Nombre = nombre;
+            this.modelos = new List<Modelo>();
+        }
     }
 }
