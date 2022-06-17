@@ -85,13 +85,18 @@ namespace pruebaPPAI.Entidades
             {
                 foreach (RecursoTecnologico recurso  in centro.ListaRecursosTecnologicos)
                 {
-                    if (this.Equals(recurso))
+                    if (this.numeroRT.Equals(recurso.numeroRT))
                     {
                         return centro.Nombre;
                     }
                 }
             }
             return "";
+        }
+
+        public string getMarcaYModelo() 
+        {
+            return this.modeloRT.nombre;
         }
 
         public bool estaEnMiCI()

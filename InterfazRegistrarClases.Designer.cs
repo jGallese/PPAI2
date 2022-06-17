@@ -34,7 +34,8 @@
             this.dgv_TiposRecursos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dgv_Recursos = new System.Windows.Forms.DataGridView();
+            //this.dgv_Recursos = new System.Windows.Forms.DataGridView();
+            this.dgv_Recursos = new Helpers.GroupByGrid();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -141,6 +142,6 @@
         private DataGridView dgv_TiposRecursos;
         private Panel panel2;
         private Panel panel3;
-        private DataGridView dgv_Recursos;
+        private Helpers.GroupByGrid dgv_Recursos;
     }
 }

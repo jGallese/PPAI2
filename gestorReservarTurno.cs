@@ -17,13 +17,13 @@ namespace pruebaPPAI
 
         public Usuario UsuarioLogueado { get; set; }
         public DateTime FechaActual { get; set; }
-        public Estado  EstadoReservado { get; set; }
+        public Estado EstadoReservado { get; set; }
 
 
         baseDeDatos bdd = new baseDeDatos();
 
 
-        public List<TipoRecurso> opcReservarTurno( Form pant)
+        public List<TipoRecurso> opcReservarTurno(Form pant)
         {
             return this.buscarTipoRT(bdd);
         }
@@ -39,8 +39,8 @@ namespace pruebaPPAI
         }
 
         public List<RecursoTecnologico> buscarRTsDelTipo()
-            //busca todos los recursos tecnologicos que correspondan al TipoRecurso seleccionado
-            // y esten disponibles para aceptar reservas (no esta en baja tecnica o mant preventivo)
+        //busca todos los recursos tecnologicos que correspondan al TipoRecurso seleccionado
+        // y esten disponibles para aceptar reservas (no esta en baja tecnica o mant preventivo)
         {
             List<RecursoTecnologico> listaRecursosReservables = new List<RecursoTecnologico>();
 
@@ -57,13 +57,11 @@ namespace pruebaPPAI
 
         public void agruparPorCI(List<RecursoTecnologico> lista)
         {
-            //List<>
-            List<Tuple<CentroInvestigación, List<RecursoTecnologico>>> matrizCentros = new List<Tuple<CentroInvestigación, List<RecursoTecnologico>>>();
-            
-            foreach (RecursoTecnologico rt in lista)
-            {
-                //rt. VER COMO SE PUEDE AGRUPAR LA LISTA DE RECURSOS POR CENTRO DE INVESTIGACION
-            }
+        }
+
+        public void tomarSeleccionRT(RecursoTecnologico recurso)
+        {
+            this.RTSeleccionado = recurso;
         }
     }
 }
