@@ -119,7 +119,7 @@
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(1637, 854);
+            this.ClientSize = new System.Drawing.Size(1513, 763);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Name = "Form1";

@@ -24,6 +24,8 @@ namespace pruebaPPAI.Entidades
 
         public List<RecursoTecnologico> ListaRecursosTecnologicos { get; set; }
 
+        public List<AsignacionCientifico> AsignacionCientificos { get; set; }
+
         public CentroInvestigación(string nombre, string sigla, string direccion, string edificio, int piso, int coordenadas,
             string telefono, string correo, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento,
             DateTime fechaAlta, DateTime tiempoAntelacionReserva, DateTime fechaBaja, string motivoBaja)
@@ -44,8 +46,7 @@ namespace pruebaPPAI.Entidades
             this.fechaBaja = fechaBaja;
             this.motivoBaja = motivoBaja;
             this.ListaRecursosTecnologicos = new List<RecursoTecnologico>();
-
-
+            this.AsignacionCientificos = new List<AsignacionCientifico>();
         }
 
         public void agregarRT(RecursoTecnologico recurso)
