@@ -34,8 +34,7 @@
             this.dgv_TiposRecursos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            //this.dgv_Recursos = new System.Windows.Forms.DataGridView();
-            this.dgv_Recursos = new Helpers.GroupByGrid();
+            this.dgv_Recursos = new pruebaPPAI.Helpers.GroupByGrid();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -110,20 +109,22 @@
             this.dgv_Recursos.AllowUserToDeleteRows = false;
             this.dgv_Recursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Recursos.Location = new System.Drawing.Point(110, 35);
+            this.dgv_Recursos.MultiSelect = false;
             this.dgv_Recursos.Name = "dgv_Recursos";
             this.dgv_Recursos.ReadOnly = true;
             this.dgv_Recursos.RowHeadersWidth = 62;
             this.dgv_Recursos.RowTemplate.Height = 33;
+            this.dgv_Recursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Recursos.Size = new System.Drawing.Size(1235, 211);
             this.dgv_Recursos.TabIndex = 0;
             this.dgv_Recursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarRT);
             // 
-            // Form1
+            // InterfazRegistrarClases
             // 
             this.ClientSize = new System.Drawing.Size(1513, 763);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Name = "Form1";
+            this.Name = "InterfazRegistrarClases";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).EndInit();
@@ -143,5 +144,6 @@
         private Panel panel2;
         private Panel panel3;
         private Helpers.GroupByGrid dgv_Recursos;
+        //private DataGridView dgv_Recursos;
     }
 }

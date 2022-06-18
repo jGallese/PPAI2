@@ -56,5 +56,17 @@ namespace pruebaPPAI.Entidades
         {
             this.ListaRecursosTecnologicos.Add(recurso);
         }
+
+        internal bool esCientificoActivo(PersonalCientifico cientifLogueado)
+        {
+            foreach (AsignacionCientifico asignacion in AsignacionCientificos)
+            {
+                if (cientifLogueado.Equals(asignacion.PersonalCientifico) && asignacion.esActivo())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

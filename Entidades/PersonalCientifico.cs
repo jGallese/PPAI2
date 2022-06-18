@@ -14,6 +14,21 @@ namespace pruebaPPAI.Entidades
         public string CorreoElectronicoPersonal { get; set; }
         public int TelefonoCelular { get; set; }
         public Usuario Usuario { get; set; }
+
+
+        public PersonalCientifico(int legajo, string nombre, string apellido, int numeroDocumento, string correoElectronicoInstitucional, string correoElectronicoPersonal, int telefonoCelular, Usuario usuario)
+        {
+            this.Legajo = legajo;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.NumeroDocumento = numeroDocumento;
+            this.CorreoElectronicoInstitucional = correoElectronicoInstitucional;
+            this.CorreoElectronicoPersonal = correoElectronicoPersonal;
+            this.TelefonoCelular = telefonoCelular;
+            this.Usuario = usuario;
+        }
     }
+
+        
 }
 

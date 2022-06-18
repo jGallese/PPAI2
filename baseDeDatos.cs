@@ -17,8 +17,14 @@ namespace pruebaPPAI
         public List<CentroInvestigación> ListaCentros { get; set; }
         public List<Marca> ListaMarcas { get; set; }
 
+        public List<PersonalCientifico> ListaCientificos { get; set; }
 
-        //tiporecurso tr = new("1", "asv");
+        public List<Usuario> ListaUsuarios{ get; set; }
+
+        public Sesion sesionActual { get; set; }
+
+        public List<AsignacionCientifico> ListaAsignaciones { get; set; }
+
 
         public baseDeDatos()
         {
@@ -49,22 +55,24 @@ namespace pruebaPPAI
 
 
             //Lista Estados
-            Estado reservable = new Estado("Disponible", "este es estado creado","Recurso" ,true, false);
+            Estado disponible = new Estado("Disponible", "este es estado creado","Recurso" ,true, false);
+            Estado enMantenimiento = new Estado("En Mantenimiento", "este es estado creado","Recurso" ,true, false);
+            Estado inicioMantCorr = new Estado("Inicio Mantenimiento Correctivo", "este es estado creado","Recurso" ,true, false);
             Estado enBaja = new Estado("enBaja", "este es estado enBaja","Recurso" ,false, false);
 
 
             //Lista Recursos
             listaRecursosTecnologicos = new List<RecursoTecnologico>();
-            listaRecursosTecnologicos.Add(new(1, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[0] ));
-            listaRecursosTecnologicos.Add(new(2, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[1] ));
-            listaRecursosTecnologicos.Add(new(4, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[2] ));
-            listaRecursosTecnologicos.Add(new(5, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[3] ));
-            listaRecursosTecnologicos.Add(new(6, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[1] ));
-            listaRecursosTecnologicos[0].ListaCambioEstadosRT.Add(new(DateTime.Now, enBaja));
-            listaRecursosTecnologicos[1].ListaCambioEstadosRT.Add(new(DateTime.Now, reservable));
-            listaRecursosTecnologicos[2].ListaCambioEstadosRT.Add(new(DateTime.Now, enBaja));
-            listaRecursosTecnologicos[3].ListaCambioEstadosRT.Add(new(DateTime.Now, reservable));
-            listaRecursosTecnologicos[4].ListaCambioEstadosRT.Add(new(DateTime.Now, reservable));
+            listaRecursosTecnologicos.Add(new(0, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[0] ));
+            listaRecursosTecnologicos.Add(new(1, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[1] ));
+            listaRecursosTecnologicos.Add(new(2, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[2] ));
+            listaRecursosTecnologicos.Add(new(3, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[3] ));
+            listaRecursosTecnologicos.Add(new(4, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[1] ));
+            listaRecursosTecnologicos[0].ListaCambioEstadosRT.Add(new(DateTime.Now, inicioMantCorr));
+            listaRecursosTecnologicos[1].ListaCambioEstadosRT.Add(new(DateTime.Now, disponible));
+            listaRecursosTecnologicos[2].ListaCambioEstadosRT.Add(new(DateTime.Now, disponible));
+            listaRecursosTecnologicos[3].ListaCambioEstadosRT.Add(new(DateTime.Now, disponible));
+            listaRecursosTecnologicos[4].ListaCambioEstadosRT.Add(new(DateTime.Now, enMantenimiento));
             //listaRecursosTecnologicos[5].ListaCambioEstadosRT.Add(new(DateTime.Now, reservable));
 
             //Lista Centros 
@@ -84,9 +92,42 @@ namespace pruebaPPAI
             ListaCentros[1].agregarRT(listaRecursosTecnologicos[4]);
             //ListaCentros[2].agregarRT(listaRecursosTecnologicos[6]);
 
+            //Lista de usuarios
+            ListaUsuarios = new List<Usuario>();
+            for (int i = 0; i < 5; i++)
+            {
+                Usuario usu = new Usuario("Usuario" + i.ToString(), "***");
+                ListaUsuarios.Add(usu);
+            }
 
-        
-        
+
+            //Lista de PersonalCientifico
+            ListaCientificos = new List<PersonalCientifico>();
+            for (int i = 0; i < 5; i++)
+            {
+                PersonalCientifico cientif = new PersonalCientifico(i, "Cientifico:" + i.ToString(), "PEPE", i, "correoInst@gmail.com", "correoPers@gmail.com", 
+                    i, ListaUsuarios[i]);
+                ListaCientificos.Add(cientif);
+            }
+
+            //Lista de Asignaciones
+            ListaAsignaciones = new List<AsignacionCientifico>();
+            for (int i = 0; i < 5; i++)
+            {
+                AsignacionCientifico asignacion = new AsignacionCientifico(DateTime.Now, ListaCientificos[i]);
+                ListaAsignaciones.Add(asignacion);
+            }
+            ListaCentros[0].AsignacionCientificos.Add(ListaAsignaciones[0]);
+            ListaCentros[0].AsignacionCientificos.Add(ListaAsignaciones[1]);
+            ListaCentros[0].AsignacionCientificos.Add(ListaAsignaciones[2]);
+            ListaCentros[1].AsignacionCientificos.Add(ListaAsignaciones[3]);
+            ListaCentros[1].AsignacionCientificos.Add(ListaAsignaciones[4]);
+
+            
+
+            sesionActual = new Sesion(DateTime.Now, ListaUsuarios[0]);
+
+
         }
 
     }

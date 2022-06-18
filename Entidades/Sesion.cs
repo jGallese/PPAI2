@@ -9,14 +9,20 @@ namespace pruebaPPAI.Entidades
     public class Sesion
     {
         public DateTime FechaHoraDesde { get; set; }
-        public DateTime FechaHoraHasta { get; set; }
-        public Usuario? Usuario { get; set; }
+        public DateTime? FechaHoraHasta { get; set; }
+        public Usuario Usuario { get; set; }
     
-        public Sesion(DateTime fechaHoraDesde, DateTime fechaHoraHasta, Usuario usuario)
+        public Sesion(DateTime fechaHoraDesde, Usuario usuario)
         {
             this.FechaHoraDesde = fechaHoraDesde;
-            this.FechaHoraHasta = fechaHoraHasta;
+            this.FechaHoraHasta = null;
             this.Usuario = usuario;
+        }
+
+        public PersonalCientifico getCientificoEnSesion(baseDeDatos bdd)
+        {
+            PersonalCientifico personal = this.Usuario.getCientifico(bdd);
+            return personal;
         }
     }
 

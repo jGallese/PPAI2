@@ -11,5 +11,19 @@
             this.Clave = password;
         }
 
+        public PersonalCientifico getCientifico(baseDeDatos bdd)
+        { 
+            foreach (PersonalCientifico cientif in bdd.ListaCientificos)
+            {
+                
+                    if (this.Nombre.Equals(cientif.Usuario.Nombre))
+                    {
+                        return cientif;
+                    }
+            }
+            return null;
+            
+        }
+
     }
 }

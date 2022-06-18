@@ -34,7 +34,7 @@ namespace pruebaPPAI.Helpers
 
 
 
-            if (IsRepeatedCellValue(args.RowIndex, args.ColumnIndex))
+            if (IsRepeatedCellValue(args.RowIndex, args.ColumnIndex) && args.ColumnIndex == 0)
 
             {
 
@@ -61,7 +61,7 @@ namespace pruebaPPAI.Helpers
                Rows[rowIndex - 1].Cells[colIndex];
 
 
-
+            
             if ((currCell.Value == prevCell.Value) ||
 
                (currCell.Value != null && prevCell.Value != null &&
@@ -102,7 +102,7 @@ namespace pruebaPPAI.Helpers
 
 
 
-            // Ignore column and row headers and first row
+            //Ignore column and row headers and first row
 
             if (args.RowIndex < 1 || args.ColumnIndex < 0)
 

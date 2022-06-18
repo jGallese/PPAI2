@@ -33,9 +33,11 @@ namespace pruebaPPAI
             return bdd.listaTiposRecursos; //mensaje *getTipoRecurso
 
         }
-        public void tomarSeleccionTipoRecurso(TipoRecurso tipoRecurso)
+        public List<RecursoTecnologico> tomarSeleccionTipoRecurso(TipoRecurso tipoRecurso)
         {
             this.TipoRecursoSeleccionado = tipoRecurso;
+            List<RecursoTecnologico> lista = buscarRTsDelTipo();
+            return lista;
         }
 
         public List<RecursoTecnologico> buscarRTsDelTipo()
@@ -62,6 +64,25 @@ namespace pruebaPPAI
         public void tomarSeleccionRT(RecursoTecnologico recurso)
         {
             this.RTSeleccionado = recurso;
+            verificarCientificoEnCi(bdd.sesionActual);
+        }
+
+        public bool verificarCientificoEnCi(Sesion sesion)
+        {
+            PersonalCientifico cientificoLogueado = sesion.getCientificoEnSesion(bdd);
+            bool resultado = RTSeleccionado.estaEnMiCI(bdd, cientificoLogueado);
+
+            if (resultado)
+            {
+                MessageBox.Show("Científico Pertenenciente al Centro de Investigacion del recurso seleccionado");
+            }
+            else { MessageBox.Show("Científico NO Pertenenciente al Centro de Investigacion del recurso seleccionado"); }
+            return resultado;
+        }
+
+        public DateTime getFechaActual()
+        {
+            return this.FechaActual = DateTime.Now;
         }
     }
 }

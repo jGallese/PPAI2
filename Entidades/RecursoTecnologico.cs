@@ -79,7 +79,7 @@ namespace pruebaPPAI.Entidades
             }
         }
 
-        public String getNombreCI(baseDeDatos bdd)
+        public CentroInvestigación getNombreCI(baseDeDatos bdd)
         {
             foreach (CentroInvestigación centro in bdd.ListaCentros)
             {
@@ -87,11 +87,11 @@ namespace pruebaPPAI.Entidades
                 {
                     if (this.numeroRT.Equals(recurso.numeroRT))
                     {
-                        return centro.Nombre;
+                        return centro;
                     }
                 }
             }
-            return "";
+            return null;
         }
 
         public string getMarcaYModelo() 
@@ -99,12 +99,13 @@ namespace pruebaPPAI.Entidades
             return this.modeloRT.nombre;
         }
 
-        public bool estaEnMiCI()
+        public bool estaEnMiCI(baseDeDatos bdd, PersonalCientifico cientifLogueado)
             {
-                /*TODO: devuelve true si el cientifico logueado pertenece al centro de investigacion 
-                    que contiene al recurso tecnologico seleccionado
-                 */
-                return true;
+            /*TODO: devuelve true si el cientifico logueado pertenece al centro de investigacion 
+                que contiene al recurso tecnologico seleccionado
+             */
+            CentroInvestigación miCentro = this.getNombreCI(bdd);
+            return miCentro.esCientificoActivo(cientifLogueado);
             }
             
         
