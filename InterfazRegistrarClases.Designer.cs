@@ -35,11 +35,17 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgv_Recursos = new pruebaPPAI.Helpers.GroupByGrid();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dgv_Fechas = new System.Windows.Forms.DataGridView();
+            this.dgv_Turnos_De_fecha = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recursos)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Turnos_De_fecha)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -119,9 +125,43 @@
             this.dgv_Recursos.TabIndex = 0;
             this.dgv_Recursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarRT);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dgv_Turnos_De_fecha);
+            this.panel4.Controls.Add(this.dgv_Fechas);
+            this.panel4.Location = new System.Drawing.Point(93, 825);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1502, 306);
+            this.panel4.TabIndex = 4;
+            // 
+            // dgv_Fechas
+            // 
+            this.dgv_Fechas.AllowUserToAddRows = false;
+            this.dgv_Fechas.AllowUserToDeleteRows = false;
+            this.dgv_Fechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Fechas.Location = new System.Drawing.Point(116, 31);
+            this.dgv_Fechas.Name = "dgv_Fechas";
+            this.dgv_Fechas.ReadOnly = true;
+            this.dgv_Fechas.RowTemplate.Height = 25;
+            this.dgv_Fechas.Size = new System.Drawing.Size(469, 170);
+            this.dgv_Fechas.TabIndex = 0;
+            this.dgv_Fechas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.presentarFechas);
+            // 
+            // dgv_Turnos_De_fecha
+            // 
+            this.dgv_Turnos_De_fecha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Turnos_De_fecha.Location = new System.Drawing.Point(810, 31);
+            this.dgv_Turnos_De_fecha.Name = "dgv_Turnos_De_fecha";
+            this.dgv_Turnos_De_fecha.RowTemplate.Height = 25;
+            this.dgv_Turnos_De_fecha.Size = new System.Drawing.Size(535, 162);
+            this.dgv_Turnos_De_fecha.TabIndex = 1;
+            this.dgv_Turnos_De_fecha.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.presentarTurnos);
+            // 
             // InterfazRegistrarClases
             // 
-            this.ClientSize = new System.Drawing.Size(1513, 763);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1513, 1061);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Name = "InterfazRegistrarClases";
@@ -131,6 +171,9 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recursos)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Turnos_De_fecha)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,6 +187,9 @@
         private Panel panel2;
         private Panel panel3;
         private Helpers.GroupByGrid dgv_Recursos;
+        private Panel panel4;
+        private DataGridView dgv_Fechas;
+        private DataGridView dgv_Turnos_De_fecha;
         //private DataGridView dgv_Recursos;
     }
 }

@@ -108,6 +108,18 @@ namespace pruebaPPAI.Entidades
             return miCentro.esCientificoActivo(cientifLogueado);
             }
             
+        public List<Turno> mostrarMisTurnos(DateTime fechaActual)
+        {
+            List<Turno> ListaTurnos = new List<Turno>();
+            foreach(Turno turno in ListaTurnos)
+            {
+                if (turno.esPosteriorFechaActual(fechaActual))
+                {
+                    ListaTurnos.Add(turno.getDatos());
+                }
+            }
+            return ListaTurnos;
+        }
         
 
     }

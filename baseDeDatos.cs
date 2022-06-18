@@ -55,11 +55,14 @@ namespace pruebaPPAI
 
 
             //Lista Estados
-            Estado disponible = new Estado("Disponible", "este es estado creado","Recurso" ,true, false);
-            Estado enMantenimiento = new Estado("En Mantenimiento", "este es estado creado","Recurso" ,true, false);
-            Estado inicioMantCorr = new Estado("Inicio Mantenimiento Correctivo", "este es estado creado","Recurso" ,true, false);
-            Estado enBaja = new Estado("enBaja", "este es estado enBaja","Recurso" ,false, false);
+            Estado disponible = new Estado("Disponible", "este es estado creado", "Recurso", true, false);
+            Estado enMantenimiento = new Estado("En Mantenimiento", "este es estado creado", "Recurso", true, false);
+            Estado inicioMantCorr = new Estado("Inicio Mantenimiento Correctivo", "este es estado creado", "Recurso", true, false);
+            Estado enBaja = new Estado("enBaja", "este es estado enBaja", "Recurso", false, false);
 
+            Estado disponibleTurno = new Estado("Disponible", "este es estado creado", "Turno", true, true); //azul
+            Estado resPendiente = new Estado("Con reserva pendiente de confirmacion", "este es estado creado", "Turno", false, true); //gris
+            Estado reservado = new Estado("Reservado", "este es estado creado", "Turno", false, true); //rojo
 
             //Lista Recursos
             listaRecursosTecnologicos = new List<RecursoTecnologico>();
@@ -126,6 +129,35 @@ namespace pruebaPPAI
             
 
             sesionActual = new Sesion(DateTime.Now, ListaUsuarios[0]);
+
+            //ListaTurnos
+            List<Turno> ListaTurnos1 = new List<Turno>();
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes",DateTime.Parse("2022-06-20 10:00"), DateTime.Parse("2022-06-20 11:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 11:01"), DateTime.Parse("2022-06-20 12:00"))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 12:01"), DateTime.Parse("2022-06-20 13:00"))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 13:01"), DateTime.Parse("2022-06-20 14:00"))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 14:01"), DateTime.Parse("2022-06-21 15:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 10:00"), DateTime.Parse("2022-06-21 11:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 11:01"), DateTime.Parse("2022-06-21 12:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 12:01"), DateTime.Parse("2022-06-21 13:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 13:01"), DateTime.Parse("2022-06-21 14:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 14:01"), DateTime.Parse("2022-06-21 15:00")));
+            listaRecursosTecnologicos[0].ListaTurnos = ListaTurnos1;
+
+            //List<Turno> ListaTurnos2 = new List<Turno>();
+            //Turno turno21 = new Turno();
+            //Turno turno22 = new Turno();
+            //Turno turno23 = new Turno();
+            //Turno turno24 = new Turno();
+            //Turno turno25 = new Turno();
+            
+            //List<Turno> ListaTurnos3 = new List<Turno>();
+            //Turno turno31 = new Turno();
+            //Turno turno32 = new Turno();
+            //Turno turno33 = new Turno();
+            //Turno turno34 = new Turno();
+            //Turno turno35 = new Turno();
+
 
 
         }

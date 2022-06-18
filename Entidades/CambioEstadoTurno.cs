@@ -11,5 +11,14 @@
             this.fechaHoraHasta = null;
             this.estado = estado;
         }
+
+        public bool EsActual()
+        {
+            if (this.fechaHoraHasta == null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

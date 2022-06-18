@@ -22,6 +22,21 @@
             return "Desde" + this.fechaHoraInicio + "Hasta" + this.fechaHoraFin;
         }
 
+        public bool esPosteriorFechaActual(DateTime fechaActual)
+        {
+            if (this.fechaHoraInicio >= fechaActual)
+            {
+                return true;
+            };
+            return false;
+        }
+
+        public Turno getDatos()
+        {
+            return this;
+            
+        }
+
         //public bool estoyDisponible()
         //{
         //    if (this.CambioEstadoTurno.estado.Equals("disponible")) { return true; };

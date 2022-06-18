@@ -143,11 +143,21 @@ namespace pruebaPPAI
             }
             //RecursoTecnologico recSeleccionado = dgv_Recursos.SelectedRows[0].DataBoundItem as RecursoTecnologico;
             ges.tomarSeleccionRT(recSeleccionado);
+        }
+
+        private void presentarFechas(object sender, DataGridViewCellEventArgs e)
+        {
+            dgv_Fechas.ColumnCount = 1;
+
+            dgv_Fechas.Columns[0].Name = "Fecha";
+            dgv_Fechas.Columns[0].DataPropertyName = "FechaHoraInicio";
 
 
-            
         }
         
+        private void presentarTurnos(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }
