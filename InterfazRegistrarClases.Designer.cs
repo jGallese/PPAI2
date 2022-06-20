@@ -36,16 +36,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgv_Recursos = new pruebaPPAI.Helpers.GroupByGrid();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dgv_Fechas = new System.Windows.Forms.DataGridView();
             this.dgv_Turnos_De_fecha = new System.Windows.Forms.DataGridView();
+            this.dgv_Fechas = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recursos)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Turnos_De_fecha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,9 +67,10 @@
             // 
             // btn_reg_reserva
             // 
-            this.btn_reg_reserva.Location = new System.Drawing.Point(887, 73);
+            this.btn_reg_reserva.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_reg_reserva.Location = new System.Drawing.Point(901, 73);
             this.btn_reg_reserva.Name = "btn_reg_reserva";
-            this.btn_reg_reserva.Size = new System.Drawing.Size(315, 188);
+            this.btn_reg_reserva.Size = new System.Drawing.Size(204, 55);
             this.btn_reg_reserva.TabIndex = 0;
             this.btn_reg_reserva.Text = "Registrar Reserva";
             this.btn_reg_reserva.UseVisualStyleBackColor = true;
@@ -86,27 +87,28 @@
             this.dgv_TiposRecursos.RowHeadersWidth = 62;
             this.dgv_TiposRecursos.RowTemplate.Height = 33;
             this.dgv_TiposRecursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_TiposRecursos.Size = new System.Drawing.Size(483, 225);
+            this.dgv_TiposRecursos.Size = new System.Drawing.Size(500, 225);
             this.dgv_TiposRecursos.TabIndex = 1;
             this.dgv_TiposRecursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarTipoRecurso);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(193)))), ((int)(((byte)(168)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dgv_TiposRecursos);
             this.panel2.Controls.Add(this.btn_reg_reserva);
-            this.panel2.Location = new System.Drawing.Point(93, 32);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1468, 367);
+            this.panel2.Size = new System.Drawing.Size(1500, 350);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.panel3.Controls.Add(this.dgv_Recursos);
-            this.panel3.Location = new System.Drawing.Point(93, 427);
+            this.panel3.Location = new System.Drawing.Point(0, 400);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1468, 327);
+            this.panel3.Size = new System.Drawing.Size(1500, 300);
             this.panel3.TabIndex = 3;
             // 
             // dgv_Recursos
@@ -114,7 +116,7 @@
             this.dgv_Recursos.AllowUserToAddRows = false;
             this.dgv_Recursos.AllowUserToDeleteRows = false;
             this.dgv_Recursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Recursos.Location = new System.Drawing.Point(110, 35);
+            this.dgv_Recursos.Location = new System.Drawing.Point(153, 40);
             this.dgv_Recursos.MultiSelect = false;
             this.dgv_Recursos.Name = "dgv_Recursos";
             this.dgv_Recursos.ReadOnly = true;
@@ -127,25 +129,13 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.Silver;
             this.panel4.Controls.Add(this.dgv_Turnos_De_fecha);
             this.panel4.Controls.Add(this.dgv_Fechas);
-            this.panel4.Location = new System.Drawing.Point(93, 825);
+            this.panel4.Location = new System.Drawing.Point(0, 750);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1502, 306);
+            this.panel4.Size = new System.Drawing.Size(1500, 300);
             this.panel4.TabIndex = 4;
-            // 
-            // dgv_Fechas
-            // 
-            this.dgv_Fechas.AllowUserToAddRows = false;
-            this.dgv_Fechas.AllowUserToDeleteRows = false;
-            this.dgv_Fechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Fechas.Location = new System.Drawing.Point(116, 31);
-            this.dgv_Fechas.Name = "dgv_Fechas";
-            this.dgv_Fechas.ReadOnly = true;
-            this.dgv_Fechas.RowTemplate.Height = 25;
-            this.dgv_Fechas.Size = new System.Drawing.Size(469, 170);
-            this.dgv_Fechas.TabIndex = 0;
-            this.dgv_Fechas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.presentarFechas);
             // 
             // dgv_Turnos_De_fecha
             // 
@@ -155,12 +145,27 @@
             this.dgv_Turnos_De_fecha.RowTemplate.Height = 25;
             this.dgv_Turnos_De_fecha.Size = new System.Drawing.Size(535, 162);
             this.dgv_Turnos_De_fecha.TabIndex = 1;
-            this.dgv_Turnos_De_fecha.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.presentarTurnos);
+            this.dgv_Turnos_De_fecha.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarTurno);
+            // 
+            // dgv_Fechas
+            // 
+            this.dgv_Fechas.AllowUserToAddRows = false;
+            this.dgv_Fechas.AllowUserToDeleteRows = false;
+            this.dgv_Fechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Fechas.Location = new System.Drawing.Point(135, 23);
+            this.dgv_Fechas.MultiSelect = false;
+            this.dgv_Fechas.Name = "dgv_Fechas";
+            this.dgv_Fechas.ReadOnly = true;
+            this.dgv_Fechas.RowTemplate.Height = 25;
+            this.dgv_Fechas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Fechas.Size = new System.Drawing.Size(469, 170);
+            this.dgv_Fechas.TabIndex = 0;
+            this.dgv_Fechas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarFecha);
             // 
             // InterfazRegistrarClases
             // 
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1513, 1061);
+            this.ClientSize = new System.Drawing.Size(1484, 1061);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -172,8 +177,8 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recursos)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Turnos_De_fecha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).EndInit();
             this.ResumeLayout(false);
 
         }

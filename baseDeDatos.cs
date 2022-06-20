@@ -132,25 +132,35 @@ namespace pruebaPPAI
 
             //ListaTurnos
             List<Turno> ListaTurnos1 = new List<Turno>();
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes",DateTime.Parse("2022-06-20 10:00"), DateTime.Parse("2022-06-20 11:00")));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 11:01"), DateTime.Parse("2022-06-20 12:00"))); 
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 12:01"), DateTime.Parse("2022-06-20 13:00"))); 
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 13:01"), DateTime.Parse("2022-06-20 14:00"))); 
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", DateTime.Parse("2022-06-20 14:01"), DateTime.Parse("2022-06-21 15:00")));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 10:00"), DateTime.Parse("2022-06-21 11:00")));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 11:01"), DateTime.Parse("2022-06-21 12:00")));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 12:01"), DateTime.Parse("2022-06-21 13:00")));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 13:01"), DateTime.Parse("2022-06-21 14:00")));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", DateTime.Parse("2022-06-21 14:01"), DateTime.Parse("2022-06-21 15:00")));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes",new DateTime(2022, 6, 20, 10, 00, 00), new DateTime(2022, 6, 20, 11, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 11, 00, 01), new DateTime(2022, 6, 20, 12, 00, 00))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 12, 00, 01), new DateTime(2022, 6, 20, 13, 00, 00))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 13, 00, 01), new DateTime(2022, 6, 20, 14, 00, 00))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 14, 00, 01), new DateTime(2022, 6, 20, 15, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 10, 00, 00), new DateTime(2022, 6, 21, 11, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 11, 00, 01), new DateTime(2022, 6, 21, 12, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 12, 00, 01), new DateTime(2022, 6, 21, 13, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 13, 00, 01), new DateTime(2022, 6, 21, 14, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 14, 00, 01), new DateTime(2022, 6, 21, 15, 00, 00)));
+            foreach (Turno turno in ListaTurnos1)
+            {
+                turno.CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, disponibleTurno));
+            }
             listaRecursosTecnologicos[0].ListaTurnos = ListaTurnos1;
 
             //List<Turno> ListaTurnos2 = new List<Turno>();
-            //Turno turno21 = new Turno();
-            //Turno turno22 = new Turno();
-            //Turno turno23 = new Turno();
-            //Turno turno24 = new Turno();
-            //Turno turno25 = new Turno();
-            
+            List<Turno> ListaTurnos2 = new List<Turno>();
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 10, 00, 00), new DateTime(2022, 6, 20, 11, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 11, 00, 01), new DateTime(2022, 6, 20, 12, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 12, 00, 01), new DateTime(2022, 6, 20, 13, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 13, 00, 01), new DateTime(2022, 6, 20, 14, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 14, 00, 01), new DateTime(2022, 6, 20, 15, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 10, 00, 00), new DateTime(2022, 6, 21, 11, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 11, 00, 01), new DateTime(2022, 6, 21, 12, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 12, 00, 01), new DateTime(2022, 6, 21, 13, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 13, 00, 01), new DateTime(2022, 6, 21, 14, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 14, 00, 01), new DateTime(2022, 6, 21, 15, 00, 00)));
+
             //List<Turno> ListaTurnos3 = new List<Turno>();
             //Turno turno31 = new Turno();
             //Turno turno32 = new Turno();

@@ -110,15 +110,15 @@ namespace pruebaPPAI.Entidades
             
         public List<Turno> mostrarMisTurnos(DateTime fechaActual)
         {
-            List<Turno> ListaTurnos = new List<Turno>();
-            foreach(Turno turno in ListaTurnos)
+            List<Turno> ListaTurs = new List<Turno>();
+            foreach(Turno turno in this.ListaTurnos)
             {
                 if (turno.esPosteriorFechaActual(fechaActual))
                 {
-                    ListaTurnos.Add(turno.getDatos());
+                    ListaTurs.Add(turno.getDatos());
                 }
             }
-            return ListaTurnos;
+            return ListaTurs;
         }
         
 

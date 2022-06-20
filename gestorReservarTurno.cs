@@ -69,9 +69,12 @@ namespace pruebaPPAI
 
         public bool verificarCientificoEnCi(Sesion sesion)
         {
-            PersonalCientifico cientificoLogueado = sesion.getCientificoEnSesion(bdd);
-            bool resultado = RTSeleccionado.estaEnMiCI(bdd, cientificoLogueado);
+            //verifica que cientifico logueado pertenezca al centro del recurso que se selecciono anteriormente.
 
+            PersonalCientifico cientificoLogueado = sesion.getCientificoEnSesion(bdd); // obtiene cientifico
+            bool resultado = RTSeleccionado.estaEnMiCI(bdd, cientificoLogueado); //realiza validacion
+
+            //muestra resultados dependiendo de si pertenece o no
             if (resultado)
             {
                 MessageBox.Show("Científico Pertenenciente al Centro de Investigacion del recurso seleccionado");
@@ -82,7 +85,16 @@ namespace pruebaPPAI
 
         public DateTime getFechaActual()
         {
+            //obtiene la fecha actual del sistema y guarda en la variable FechaActual
             return this.FechaActual = DateTime.Now;
+        }
+
+        public List<Turno> agruparYOrdenarTurnos()
+        {
+            //trae todos los turnos del recurso seleccionado, comprobando que sean posteriores a la fecha actual del sistema.
+            List<Turno> listaTurnos = new List<Turno>();
+            listaTurnos = RTSeleccionado.mostrarMisTurnos(FechaActual);
+            return listaTurnos;
         }
     }
 }
