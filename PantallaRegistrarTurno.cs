@@ -10,6 +10,7 @@ namespace pruebaPPAI
         public List<RecursoTecnologico> ListaRecs { get; set; }
 
         public List<Turno> ListaTurnos{ get; set; }
+                                                                                                                                                                                                                                                                                                                                                                                                  public string fechaSelecc { get; set; }
         private gestorRegistrarTurno ges;
         baseDeDatos bdd = new baseDeDatos();
         public PantallaRegistrarTurnos()
@@ -17,7 +18,7 @@ namespace pruebaPPAI
             InitializeComponent();
             ges = new gestorRegistrarTurno(); 
             ListaRecs = new List<RecursoTecnologico>();
-            panel5.Visible = false;
+            panel5.Visible = true;
             panel2.Visible = true;
             panel3.Visible = false;
             panel4.Visible = false;
@@ -183,7 +184,7 @@ namespace pruebaPPAI
 
             dgv_Fechas.Rows.Clear();
 
-            for (int i = 18; i < 23; i++)
+            for (int i = 21; i < 26; i++)
             {
                 dgv_Fechas.Rows.Add(new string[] { new DateTime(2022, 6, i).ToShortDateString() });
             }
@@ -227,14 +228,14 @@ namespace pruebaPPAI
             DataGridViewRow clickedFecha = (sender as DataGridView).Rows[e.RowIndex];
             
 
-            string fechaSelecc = "";
+            this.fechaSelecc = "";
 
 
                 if (clickedFecha.Cells[0].Style.BackColor == Color.LightBlue)
                 {
-                    fechaSelecc = clickedFecha.Cells[0].Value.ToString();
+                    this.fechaSelecc = clickedFecha.Cells[0].Value.ToString();
                     MessageBox.Show("Ha seleccionado una fecha para la cual hay disponibilidad de turnos \nAhora, por favor, seleccione un turno");
-                    presentarTurnos(DateTime.Parse(fechaSelecc));
+                    presentarTurnos(DateTime.Parse(this.fechaSelecc));
             }
                 else
                 {
@@ -252,11 +253,12 @@ namespace pruebaPPAI
 
             foreach (Turno turno in ListaTurnos)
             { //busca de la lista de turnos total, los que coincidan con la fecha
-                if (turno.fechaHoraInicio.ToShortDateString() != fechaSeleccionada.ToShortDateString())
+                if (turno.fechaHoraInicio.ToLongDateString() == fechaSeleccionada.ToLongDateString())
                 {
                     listAuxTurn.Add(turno);
                 }
             }
+            ListaTurnos = listAuxTurn;
 
             //crea la tabla
             dgv_Turnos_De_fecha.Rows.Clear();
@@ -324,17 +326,18 @@ namespace pruebaPPAI
             }
             else
             {
-                string auxFecha = clickedRow.Cells[0].Value.ToString();
-                DateTime fechaSeleccionada = DateTime.Parse(auxFecha);
+                string auxFecha = (this.fechaSelecc+" " + clickedRow.Cells[0].Value.ToString());
+                DateTime fechaSelec = DateTime.Parse(auxFecha);
 
                 Turno turnoSeleccionado = null;
 
                 foreach (Turno turno in ListaTurnos)
                 {
-                    if (turno.fechaHoraInicio == fechaSeleccionada)
+                    if (turno.fechaHoraInicio == fechaSelec)
                     {
                         turnoSeleccionado = turno;
                         MessageBox.Show(turnoSeleccionado.mostrarTurno());
+                        break;
                     }
                 }
 
@@ -351,14 +354,13 @@ namespace pruebaPPAI
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
-            panel4.Visible = false;
-            
+            panel4.Visible = true;
+
             panel5.Visible = true;
             cmbTiposNotificacion.Visible = false;
             label3.Visible = false;
 
-            this.Size = new System.Drawing.Size(1525, 400);
-            panel5.Location = new Point(0,0);
+            //panel5.Location = new Point(0,0);
             dataTurno.Text = ges.TurnoReservado.mostrarTurno();
             dataRecurso.Text = ges.RTSeleccionado.getDatos();
         }

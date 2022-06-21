@@ -31,17 +31,20 @@ namespace pruebaPPAI
         {
             //Lista Tipos Recursos
             listaTiposRecursos = new List<TipoRecurso>();
-            listaTiposRecursos.Add(new("Balanza", "esto pesa"));
-            listaTiposRecursos.Add(new("Microscopio", "para ver cosas chiquitas"));
-            listaTiposRecursos.Add(new("Generador de particulas atomicas", "peligro"));
+            listaTiposRecursos.Add(new("Balanza", "Objeto para pesar"));
+            listaTiposRecursos.Add(new("Microscopio", "Analizar particulas pequeñas"));
+            listaTiposRecursos.Add(new("Centrifugador", "Centrifuga sustancias"));
 
 
             //Lista Modelos
             listaModelos = new List<Modelo>();
-            listaModelos.Add(new("1"));
-            listaModelos.Add(new("2"));
-            listaModelos.Add(new("3"));
-            listaModelos.Add(new("4"));
+            listaModelos.Add(new("iPesadora"));
+            listaModelos.Add(new("iPesadora Pro"));
+            listaModelos.Add(new("Galaxy Weight"));
+            listaModelos.Add(new("iMicroscopio"));
+            listaModelos.Add(new("Galaxy Microscopic"));
+            listaModelos.Add(new("iCentrif"));
+            listaModelos.Add(new("Gcentrif"));
 
 
             //Lista Marcas
@@ -51,7 +54,11 @@ namespace pruebaPPAI
             ListaMarcas[0].modelos.Add(listaModelos[0]);
             ListaMarcas[0].modelos.Add(listaModelos[1]);
             ListaMarcas[1].modelos.Add(listaModelos[2]);
-            ListaMarcas[1].modelos.Add(listaModelos[3]);
+            ListaMarcas[0].modelos.Add(listaModelos[3]);
+            ListaMarcas[1].modelos.Add(listaModelos[4]);
+            ListaMarcas[0].modelos.Add(listaModelos[5]);
+            ListaMarcas[1].modelos.Add(listaModelos[6]);
+
 
 
 
@@ -66,27 +73,24 @@ namespace pruebaPPAI
             listaEstados.Add(new Estado("Con reserva pendiente de confirmacion", "este es estado creado", "Turno", false, true));
             listaEstados.Add(new Estado("Reservado", "este es estado creado", "Turno", false, true));
 
-            //Estado disponible = new Estado("Disponible", "este es estado creado", "Recurso", true, false);
-            //Estado enMantenimiento = new Estado("En Mantenimiento", "este es estado creado", "Recurso", true, false);
-            //Estado inicioMantCorr = new Estado("Inicio Mantenimiento Correctivo", "este es estado creado", "Recurso", true, false);
-            //Estado enBaja = new Estado("enBaja", "este es estado enBaja", "Recurso", false, false);
-
-            //Estado disponibleTurno = new Estado("Disponible", "este es estado creado", "Turno", true, true); //azul
-            //Estado resPendiente = new Estado("Con reserva pendiente de confirmacion", "este es estado creado", "Turno", false, true); //gris
-            //Estado reservado = new Estado("Reservado", "este es estado creado", "Turno", false, true); //rojo
+            
 
             //Lista Recursos
             listaRecursosTecnologicos = new List<RecursoTecnologico>();
-            listaRecursosTecnologicos.Add(new(0, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[0] ));
-            listaRecursosTecnologicos.Add(new(1, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[1] ));
-            listaRecursosTecnologicos.Add(new(2, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[2] ));
-            listaRecursosTecnologicos.Add(new(3, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[3] ));
-            listaRecursosTecnologicos.Add(new(4, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("00:20:00"), listaTiposRecursos[0], listaModelos[1] ));
+            listaRecursosTecnologicos.Add(new(0, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[0], listaModelos[0] ));
+            listaRecursosTecnologicos.Add(new(1, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[0], listaModelos[1] ));
+            listaRecursosTecnologicos.Add(new(2, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[0], listaModelos[2] ));
+            listaRecursosTecnologicos.Add(new(3, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[0], listaModelos[3] ));
+            listaRecursosTecnologicos.Add(new(4, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[0], listaModelos[1] ));
+            listaRecursosTecnologicos.Add(new(5, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[0], listaModelos[1] ));
+            listaRecursosTecnologicos.Add(new(6, DateTime.Now, null, DateTime.Today, DateTime.Today, TimeOnly.Parse("01:00:00"), listaTiposRecursos[1], listaModelos[1] ));
             listaRecursosTecnologicos[0].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[0]));
             listaRecursosTecnologicos[1].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[0]));
             listaRecursosTecnologicos[2].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[1]));
             listaRecursosTecnologicos[3].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[3]));
-            listaRecursosTecnologicos[4].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[2]));
+            listaRecursosTecnologicos[4].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[0]));
+            listaRecursosTecnologicos[5].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[1]));
+            listaRecursosTecnologicos[6].ListaCambioEstadosRT.Add(new(DateTime.Now, listaEstados[2]));
             //listaRecursosTecnologicos[5].ListaCambioEstadosRT.Add(new(DateTime.Now, reservable));
 
             //Lista Centros 
@@ -102,8 +106,11 @@ namespace pruebaPPAI
             ListaCentros[0].agregarRT(listaRecursosTecnologicos[0]);
             ListaCentros[0].agregarRT(listaRecursosTecnologicos[1]);
             ListaCentros[0].agregarRT(listaRecursosTecnologicos[2]);
+            ListaCentros[0].agregarRT(listaRecursosTecnologicos[4]);
             ListaCentros[1].agregarRT(listaRecursosTecnologicos[3]);
-            ListaCentros[1].agregarRT(listaRecursosTecnologicos[4]);
+            ListaCentros[1].agregarRT(listaRecursosTecnologicos[5]);
+            ListaCentros[1].agregarRT(listaRecursosTecnologicos[6]);
+
             //ListaCentros[2].agregarRT(listaRecursosTecnologicos[6]);
 
             //Lista de usuarios
@@ -143,42 +150,83 @@ namespace pruebaPPAI
 
             //ListaTurnos
             List<Turno> ListaTurnos1 = new List<Turno>();
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes",new DateTime(2022, 6, 20, 10, 00, 00), new DateTime(2022, 6, 20, 11, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 11, 00, 00), new DateTime(2022, 6, 20, 12, 00, 00))); 
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 12, 00, 00), new DateTime(2022, 6, 20, 13, 00, 00))); 
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 13, 00, 00), new DateTime(2022, 6, 20, 14, 00, 00))); 
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 14, 00, 00), new DateTime(2022, 6, 20, 15, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 10, 00, 00), new DateTime(2022, 6, 21, 11, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 11, 00, 00), new DateTime(2022, 6, 21, 12, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 12, 00, 00), new DateTime(2022, 6, 21, 13, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 13, 00, 00), new DateTime(2022, 6, 21, 14, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 11, 00, 00), new DateTime(2022, 6, 21, 12, 00, 00))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 12, 00, 00), new DateTime(2022, 6, 21, 13, 00, 00))); 
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 13, 00, 00), new DateTime(2022, 6, 21, 14, 00, 00))); 
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 14, 00, 00), new DateTime(2022, 6, 21, 15, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 15, 00, 00), new DateTime(2022, 6, 21, 16, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 16, 00, 00), new DateTime(2022, 6, 21, 17, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 17, 00, 00), new DateTime(2022, 6, 21, 18, 00, 00)));
+
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 10, 00, 00), new DateTime(2022, 6, 22, 11, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 11, 00, 00), new DateTime(2022, 6, 22, 12, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 12, 00, 00), new DateTime(2022, 6, 22, 13, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 13, 00, 00), new DateTime(2022, 6, 22, 14, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 14, 00, 00), new DateTime(2022, 6, 22, 15, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 15, 00, 00), new DateTime(2022, 6, 22, 16, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 16, 00, 00), new DateTime(2022, 6, 22, 17, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 17, 00, 00), new DateTime(2022, 6, 22, 18, 00, 00)));
+
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 10, 00, 00), new DateTime(2022, 6, 23, 11, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 11, 00, 00), new DateTime(2022, 6, 23, 12, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 12, 00, 00), new DateTime(2022, 6, 23, 13, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 13, 00, 00), new DateTime(2022, 6, 23, 14, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 14, 00, 00), new DateTime(2022, 6, 23, 15, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 15, 00, 00), new DateTime(2022, 6, 23, 16, 00, 00)));
 
             for (int i = 0; i < ListaTurnos1.Count; i++)
             {
                 if ((i%2)==0 )
                 {
-                    ListaTurnos1[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[4]));
+                    ListaTurnos1[i].CambioEstadoTurno.Add(new CambioEstadoTurno(ListaTurnos1[i].fechaHoraInicio, listaEstados[4]));
                 } else
                 {
-                    ListaTurnos1[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[6]));
+                    ListaTurnos1[i].CambioEstadoTurno.Add(new CambioEstadoTurno(ListaTurnos1[i].fechaHoraInicio, listaEstados[6]));
                 }
             }
             listaRecursosTecnologicos[0].ListaTurnos = ListaTurnos1;
+            listaRecursosTecnologicos[1].ListaTurnos = ListaTurnos1;
+            listaRecursosTecnologicos[2].ListaTurnos = ListaTurnos1;
+            listaRecursosTecnologicos[3].ListaTurnos = ListaTurnos1;
+            listaRecursosTecnologicos[5].ListaTurnos = ListaTurnos1;
+            
+            listaRecursosTecnologicos[4].ListaTurnos = ListaTurnos1;
+
 
             //List<Turno> ListaTurnos2 = new List<Turno>();
             List<Turno> ListaTurnos2 = new List<Turno>();
-            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 10, 00, 00), new DateTime(2022, 6, 20, 11, 00, 00)));
-            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 11, 00, 00), new DateTime(2022, 6, 20, 12, 00, 00)));
-            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 12, 00, 00), new DateTime(2022, 6, 20, 13, 00, 00)));
-            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 13, 00, 00), new DateTime(2022, 6, 20, 14, 00, 00)));
-            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Lunes", new DateTime(2022, 6, 20, 14, 00, 00), new DateTime(2022, 6, 20, 15, 00, 00)));
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 10, 00, 00), new DateTime(2022, 6, 21, 11, 00, 00)));
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 11, 00, 00), new DateTime(2022, 6, 21, 12, 00, 00)));
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 12, 00, 00), new DateTime(2022, 6, 21, 13, 00, 00)));
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 13, 00, 00), new DateTime(2022, 6, 21, 14, 00, 00)));
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 14, 00, 00), new DateTime(2022, 6, 21, 15, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 15, 00, 00), new DateTime(2022, 6, 21, 16, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 10, 00, 00), new DateTime(2022, 6, 22, 11, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 11, 00, 00), new DateTime(2022, 6, 22, 12, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 12, 00, 00), new DateTime(2022, 6, 22, 13, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 13, 00, 00), new DateTime(2022, 6, 22, 14, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 14, 00, 00), new DateTime(2022, 6, 22, 15, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 15, 00, 00), new DateTime(2022, 6, 22, 16, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 10, 00, 00), new DateTime(2022, 6, 23, 11, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 11, 00, 00), new DateTime(2022, 6, 23, 12, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 12, 00, 00), new DateTime(2022, 6, 23, 13, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 13, 00, 00), new DateTime(2022, 6, 23, 14, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 14, 00, 00), new DateTime(2022, 6, 23, 15, 00, 00)));
+            ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 15, 00, 00), new DateTime(2022, 6, 23, 16, 00, 00)));
 
+            for (int i = 0; i < ListaTurnos1.Count; i++)
+            {
+                if ((i % 2) == 0)
+                {
+                    ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[4]));
+                }
+                else
+                {
+                    ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[6]));
+                }
+            }
+            listaRecursosTecnologicos[1].ListaTurnos = ListaTurnos2;
             //List<Turno> ListaTurnos3 = new List<Turno>();
             //Turno turno31 = new Turno();
             //Turno turno32 = new Turno();

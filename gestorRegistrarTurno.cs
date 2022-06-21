@@ -98,7 +98,7 @@ namespace pruebaPPAI
         {
             //trae todos los turnos del recurso seleccionado, comprobando que sean posteriores a la fecha actual del sistema.
             List<Turno> listaTurnos = new List<Turno>();
-            listaTurnos = RTSeleccionado.mostrarMisTurnos(FechaActual);
+            listaTurnos = RTSeleccionado.mostrarMisTurnos(getFechaActual());
             return listaTurnos;
         }
 
