@@ -53,12 +53,12 @@ namespace pruebaPPAI.Entidades
         }
 
         public void agregarRT(RecursoTecnologico recurso)
-        {
+        {//agrega una recurso tecnologico a su lista de recursos. representa agregacion.
             this.ListaRecursosTecnologicos.Add(recurso);
         }
 
         internal bool esCientificoActivo(PersonalCientifico cientifLogueado)
-        {
+        {//retorna true si el cientifico logueado pasado como parametro pertenece al centro 
             foreach (AsignacionCientifico asignacion in AsignacionCientificos)
             {
                 if (cientifLogueado.Equals(asignacion.PersonalCientifico) && asignacion.esActivo())

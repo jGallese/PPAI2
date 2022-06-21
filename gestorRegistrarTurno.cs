@@ -22,19 +22,22 @@ namespace pruebaPPAI
 
         baseDeDatos bdd = new baseDeDatos();
 
+        
+
 
         public List<TipoRecurso> opcReservarTurno(Form pant)
         {
+            //comienza la reserva del caso de uso
             return this.buscarTipoRT(bdd);
         }
 
         public List<TipoRecurso> buscarTipoRT(baseDeDatos bdd)
-        {
+        {//retorna la lista de tipos recursos 
             return bdd.listaTiposRecursos; //mensaje *getTipoRecurso
 
         }
         public List<RecursoTecnologico> tomarSeleccionTipoRecurso(TipoRecurso tipoRecurso)
-        {
+        {//guarda el tipo de recurso seleccionado por el cliente y busca los recursos del tipo seleccionado por el cliente
             this.TipoRecursoSeleccionado = tipoRecurso;
             List<RecursoTecnologico> lista = buscarRTsDelTipo();
             return lista;
@@ -57,14 +60,16 @@ namespace pruebaPPAI
             return listaRecursosReservables;
         }
 
-        public void agruparPorCI(List<RecursoTecnologico> lista)
-        {
+        public void agruparPorCI(PantallaRegistrarTurnos pant)
+        {//Llama a metodo de solicitar seleccion de recursos, los rts se agrupan solos en la tabla
+            pant.solicitarSeleccionRT();
         }
 
         public void tomarSeleccionRT(RecursoTecnologico recurso)
         {
+            //obtiene el recurso seleccionado por el cientifico
             this.RTSeleccionado = recurso;
-            verificarCientificoEnCi(bdd.sesionActual);
+            bool cientifico = verificarCientificoEnCi(bdd.sesionActual);
         }
 
         public bool verificarCientificoEnCi(Sesion sesion)
@@ -95,6 +100,59 @@ namespace pruebaPPAI
             List<Turno> listaTurnos = new List<Turno>();
             listaTurnos = RTSeleccionado.mostrarMisTurnos(FechaActual);
             return listaTurnos;
+        }
+
+        public void tomarSeleccionTurno(Turno turnoSeleccionado)
+        {            //obtiene el turno seleccionado por el cientifico
+
+            this.TurnoReservado = turnoSeleccionado;
+        }
+
+        public void tomarConfirmacion(PantallaRegistrarTurnos interfaz)
+        {   //una vez confirmada la reserva del turno, llama a solicitar tipo de notificacion
+
+            interfaz.solicitarTipoNotificacion();
+            
+        }
+
+        internal void tomarTipoNotificacion(string a)
+        {            //obtiene el tipo de notificacion seleccinado por el cientifico
+
+            MessageBox.Show("Los datos de su reserva serán enviados por " + a);
+            obtenerEstadoReservado();
+        }
+
+        private void obtenerEstadoReservado()
+        { //busca en la bdd el estado de turno con nombre reservado
+            foreach (Estado estado in bdd.listaEstados)
+            {
+                if (estado.EsAmbitoTurno())
+                {
+                    if (estado.EsReservado())
+                    {
+                        this.EstadoReservado = estado;
+                        break;
+                    }
+                }
+                
+            }
+            RTSeleccionado.registrarReserva(TurnoReservado, FechaActual, EstadoReservado);
+
+            generarNotificacion(bdd.email);
+        }
+
+        private void generarNotificacion(InterfazEmail email)
+        {   //le envia al objeto de interfaz email el mensaje para que envie la notificacion.
+
+            email.enviarNotificacion();
+            finCU();
+
+        }
+
+        private void finCU()
+        {//termina el caso de uso. No es mucho, pero es trabajo honesto.
+            MessageBox.Show("Se generó la notificacion de la reserva del turno confirmado previamente\n" +
+                "Le llegará la notificacion por el medio seleccionado");
         }
     }
 }

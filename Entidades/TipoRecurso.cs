@@ -12,7 +12,7 @@
         }
 
         public string GetTipoRecurso()
-        {
+        {//muestra el tipo recurso
             return "Tipo Recurso:" + this.Nombre + ". Descripcion:" + this.Descripcion;
         }
     }

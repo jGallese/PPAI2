@@ -13,6 +13,7 @@
 
         public PersonalCientifico getCientifico(baseDeDatos bdd)
         { 
+            //retorna el cientifico que se encuentre logueado en la base de datos
             foreach (PersonalCientifico cientif in bdd.ListaCientificos)
             {
                 

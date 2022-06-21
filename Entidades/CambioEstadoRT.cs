@@ -19,7 +19,7 @@ namespace pruebaPPAI.Entidades
         }
 
         public bool EsActual()
-        {
+        {//retorna true si el cambio de estado es el actual (fechafin es nula)
             if (this.FechaHoraHasta.Equals(null))
             {
                 return true;
@@ -28,7 +28,7 @@ namespace pruebaPPAI.Entidades
         }
 
         internal bool EsReservable()
-        {
+        { // retorna true si el estado asociado alcambio de estado es reservable
             if (this.Estado.EsReservable)
             {
                 return true;

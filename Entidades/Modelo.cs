@@ -8,8 +8,8 @@
             this.nombre = nombre;
         }
 
-        public String getMarca(baseDeDatos bdd)
-        {
+        public String getMarcaYModelo(baseDeDatos bdd)
+        {//busca en la base de datos la marca correspondiente al modelo. y retorna su nombre
             foreach (Marca marca in bdd.ListaMarcas)
             {
                 foreach (Modelo mod in marca.modelos)
@@ -23,6 +23,7 @@
             return "";
         }
     }
+    
 
         
 }

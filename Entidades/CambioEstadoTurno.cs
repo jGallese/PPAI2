@@ -13,12 +13,18 @@
         }
 
         public bool EsActual()
-        {
+        {//es actual el cambio de estado que no tenga fecha de fin
             if (this.fechaHoraHasta == null)
             {
                 return true;
             }
             return false;
+        }
+
+        public void setFechaHasta(DateTime fechaHoraHasta)
+        {// le agrega una fecha de fin al cambio de estado
+            this.fechaHoraHasta = fechaHoraHasta;
+
         }
     }
 }

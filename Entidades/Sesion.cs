@@ -21,6 +21,7 @@ namespace pruebaPPAI.Entidades
 
         public PersonalCientifico getCientificoEnSesion(baseDeDatos bdd)
         {
+            //retorna el cientifico que se encuentra utilizando el sistema.
             PersonalCientifico personal = this.Usuario.getCientifico(bdd);
             return personal;
         }

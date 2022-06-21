@@ -24,7 +24,7 @@ namespace pruebaPPAI.Entidades
         }
 
         public bool esActivo()
-        {
+        { //retorna true si la fechaHasta de asignacion es nula, por lo tanto el cientif sigue activo.
             if(this.FechaHasta == null) { return true; }
             return false;
         }

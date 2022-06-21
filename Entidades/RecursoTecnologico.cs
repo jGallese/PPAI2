@@ -47,7 +47,7 @@ namespace pruebaPPAI.Entidades
 
         //Metodos
         public bool esTipoRT(TipoRecurso tipoRec)
-        {
+        {//retorna true si el recurso es del tipo que se pasa por parametro(el seleccionado por el usuario)
             if (this.tipoRecurso.Equals(tipoRec))
             {
                 return true;
@@ -80,7 +80,7 @@ namespace pruebaPPAI.Entidades
         }
 
         public CentroInvestigación getNombreCI(baseDeDatos bdd)
-        {
+        {//retorna el centro de investigacion al que pertenece el recurso 
             foreach (CentroInvestigación centro in bdd.ListaCentros)
             {
                 foreach (RecursoTecnologico recurso  in centro.ListaRecursosTecnologicos)
@@ -94,14 +94,9 @@ namespace pruebaPPAI.Entidades
             return null;
         }
 
-        public string getMarcaYModelo() 
-        {
-            return this.modeloRT.nombre;
-        }
-
         public bool estaEnMiCI(baseDeDatos bdd, PersonalCientifico cientifLogueado)
             {
-            /*TODO: devuelve true si el cientifico logueado pertenece al centro de investigacion 
+            /* devuelve true si el cientifico logueado pertenece al centro de investigacion 
                 que contiene al recurso tecnologico seleccionado
              */
             CentroInvestigación miCentro = this.getNombreCI(bdd);
@@ -110,6 +105,7 @@ namespace pruebaPPAI.Entidades
             
         public List<Turno> mostrarMisTurnos(DateTime fechaActual)
         {
+            //busca los turnos posteriores a la fecha que se pasa como parametro(fecha actual del sistema) y retorna los mismos
             List<Turno> ListaTurs = new List<Turno>();
             foreach(Turno turno in this.ListaTurnos)
             {
@@ -120,8 +116,23 @@ namespace pruebaPPAI.Entidades
             }
             return ListaTurs;
         }
-        
 
+        public string getDatos()
+        {//muestra datos basicos del recurso 
+            return "| Tipo Recurso: " + this.tipoRecurso.Nombre + "\n| Recurso Numero: " + this.numeroRT.ToString() + "\n| Modelo:" + this.modeloRT.nombre;
+        }
+
+        public void registrarReserva(Turno turnoSeleccionado, DateTime fechaActual, Estado estReservado)
+        {//registra la reserva de un turno seleccionado por el usuario
+            foreach (Turno turno in ListaTurnos)
+            {
+                if (turno.Equals(turnoSeleccionado))
+                {
+                    turno.reservar(fechaActual, estReservado);
+                }
+            }
+
+        }
     }
 
     

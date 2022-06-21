@@ -17,7 +17,15 @@
             this.EsCancelable = esCancelable;
         }
 
-        
+        public bool EsAmbitoTurno()
+        { //retorna true si el ambito del estado es turno. El estado corresponde a objetos turno/
+            return this.Ambito == "Turno";
+        }
+
+        public bool EsReservado()
+        {//retorna true si el estado es reservado.
+            return this.Nombre == "Reservado";
+        }
     }
 
     
