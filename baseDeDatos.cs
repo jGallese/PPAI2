@@ -156,8 +156,7 @@ namespace pruebaPPAI
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 13, 00, 00), new DateTime(2022, 6, 21, 14, 00, 00))); 
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 14, 00, 00), new DateTime(2022, 6, 21, 15, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 15, 00, 00), new DateTime(2022, 6, 21, 16, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 16, 00, 00), new DateTime(2022, 6, 21, 17, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Martes", new DateTime(2022, 6, 21, 17, 00, 00), new DateTime(2022, 6, 21, 18, 00, 00)));
+            
 
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 10, 00, 00), new DateTime(2022, 6, 22, 11, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 11, 00, 00), new DateTime(2022, 6, 22, 12, 00, 00)));
@@ -165,8 +164,7 @@ namespace pruebaPPAI
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 13, 00, 00), new DateTime(2022, 6, 22, 14, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 14, 00, 00), new DateTime(2022, 6, 22, 15, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 15, 00, 00), new DateTime(2022, 6, 22, 16, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 16, 00, 00), new DateTime(2022, 6, 22, 17, 00, 00)));
-            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Miercoles", new DateTime(2022, 6, 22, 17, 00, 00), new DateTime(2022, 6, 22, 18, 00, 00)));
+            
 
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 10, 00, 00), new DateTime(2022, 6, 23, 11, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 11, 00, 00), new DateTime(2022, 6, 23, 12, 00, 00)));
@@ -174,6 +172,20 @@ namespace pruebaPPAI
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 13, 00, 00), new DateTime(2022, 6, 23, 14, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 14, 00, 00), new DateTime(2022, 6, 23, 15, 00, 00)));
             ListaTurnos1.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 15, 00, 00), new DateTime(2022, 6, 23, 16, 00, 00)));
+            
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Viernes", new DateTime(2022, 6, 24, 10, 00, 00), new DateTime(2022, 6, 24, 11, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Viernes", new DateTime(2022, 6, 24, 11, 00, 00), new DateTime(2022, 6, 24, 12, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Viernes", new DateTime(2022, 6, 24, 12, 00, 00), new DateTime(2022, 6, 24, 13, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Viernes", new DateTime(2022, 6, 24, 13, 00, 00), new DateTime(2022, 6, 24, 14, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Viernes", new DateTime(2022, 6, 24, 14, 00, 00), new DateTime(2022, 6, 24, 15, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Viernes", new DateTime(2022, 6, 24, 15, 00, 00), new DateTime(2022, 6, 24, 16, 00, 00)));
+            
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Sabado", new DateTime(2022, 6, 25, 10, 00, 00), new DateTime(2022, 6, 25, 11, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Sabado", new DateTime(2022, 6, 25, 11, 00, 00), new DateTime(2022, 6, 25, 12, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Sabado", new DateTime(2022, 6, 25, 12, 00, 00), new DateTime(2022, 6, 25, 13, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Sabado", new DateTime(2022, 6, 25, 13, 00, 00), new DateTime(2022, 6, 25, 14, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Sabado", new DateTime(2022, 6, 25, 14, 00, 00), new DateTime(2022, 6, 25, 15, 00, 00)));
+            ListaTurnos1.Add(new Turno(DateTime.MinValue, "Sabado", new DateTime(2022, 6, 25, 15, 00, 00), new DateTime(2022, 6, 25, 16, 00, 00)));
 
             for (int i = 0; i < ListaTurnos1.Count; i++)
             {
@@ -187,9 +199,7 @@ namespace pruebaPPAI
             }
             listaRecursosTecnologicos[0].ListaTurnos = ListaTurnos1;
             listaRecursosTecnologicos[1].ListaTurnos = ListaTurnos1;
-            listaRecursosTecnologicos[2].ListaTurnos = ListaTurnos1;
-            listaRecursosTecnologicos[3].ListaTurnos = ListaTurnos1;
-            listaRecursosTecnologicos[5].ListaTurnos = ListaTurnos1;
+            
             
             listaRecursosTecnologicos[4].ListaTurnos = ListaTurnos1;
 

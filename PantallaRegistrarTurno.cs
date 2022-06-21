@@ -184,11 +184,15 @@ namespace pruebaPPAI
 
             dgv_Fechas.Rows.Clear();
 
-            for (int i = 21; i < 26; i++)
-            {
-                dgv_Fechas.Rows.Add(new string[] { new DateTime(2022, 6, i).ToShortDateString() });
-            }
+            //for (int i = 21; i < 26; i++)
+            //{
+            //    dgv_Fechas.Rows.Add(new string[] { new DateTime(2022, 6, i).ToShortDateString() });
+            //}
 
+            foreach (Turno turno in ges.RTSeleccionado.ListaTurnos)
+            {
+                dgv_Fechas.Rows.Add(new string[] { turno.fechaHoraInicio.ToShortDateString() });
+            }
             //pintar fechas dependiendo de las distintas disponibilidades del turno
             for (int i = 0; i < dgv_Fechas.Rows.Count; i++)
             {
@@ -245,7 +249,6 @@ namespace pruebaPPAI
             
                 dgv_Turnos_De_fecha.Visible = true;
         }
-
 
         private void presentarTurnos(DateTime fechaSeleccionada)
         {   //muestra los turnitos que coincidan con la fecha seleccionada por el cientifico
