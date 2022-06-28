@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 namespace pruebaPPAI
 {
     internal class gestorRegistrarTurno
-    {
-
+    { // TODO: realizar cambios:
+            // gestor no debe pasar objetos ni listas a la interfaz, solamente debe pasar strings
+            //modificar metodos para que cada uno envie una lista de strings para rellenar 
+            //grillas de la interfaz
         public TipoRecurso TipoRecursoSeleccionado { get; set; }
 
         public RecursoTecnologico RTSeleccionado { get; set; }
