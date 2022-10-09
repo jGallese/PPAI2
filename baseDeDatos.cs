@@ -225,18 +225,18 @@ namespace pruebaPPAI
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 14, 00, 00), new DateTime(2022, 6, 23, 15, 00, 00)));
             ListaTurnos2.Add(new Turno(DateTime.MinValue, "Jueves", new DateTime(2022, 6, 23, 15, 00, 00), new DateTime(2022, 6, 23, 16, 00, 00)));
 
-            for (int i = 0; i < ListaTurnos1.Count; i++)
-            {
-                if ((i % 2) == 0)
-                {
-                    ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[4]));
-                }
-                else
-                {
-                    ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[6]));
-                }
-            }
-            listaRecursosTecnologicos[1].ListaTurnos = ListaTurnos2;
+            //for (int i = 0; i < ListaTurnos1.Count; i++)
+            //{
+            //    if ((i % 2) == 0)
+            //    {
+            //        ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[4]));
+            //    }
+            //    else
+            //    {
+            //        ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[6]));
+            //    }
+            //}
+            //listaRecursosTecnologicos[1].ListaTurnos = ListaTurnos2;
             //List<Turno> ListaTurnos3 = new List<Turno>();
             //Turno turno31 = new Turno();
             //Turno turno32 = new Turno();
