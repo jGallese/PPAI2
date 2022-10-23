@@ -4,8 +4,8 @@
     {
         public DateTime fechaHoraDesde{ get; set; }
         public DateTime? fechaHoraHasta { get; set; }
-        public Estado estado{ get; set; }
-        public CambioEstadoTurno(DateTime fechaHoraDesde, Estado estado)
+        public EstadoTurno estado{ get; set; }
+        public CambioEstadoTurno(DateTime fechaHoraDesde, EstadoTurno estado)
         {
             this.fechaHoraDesde = fechaHoraDesde;
             this.fechaHoraHasta = null;
