@@ -47,7 +47,7 @@ namespace pruebaPPAI.Entidades
             Disponible eDisponible = new Disponible();
             eDisponible.reservar(fechaActual, cambioEActual, this);
 
-            CambioEstadoTurno.Add(new CambioEstadoTurno(fechaActual, estReservado));
+            CambioEstadoTurno.Add(new CambioEstadoTurno(fechaActual, estaReservado));
 
         }
 
