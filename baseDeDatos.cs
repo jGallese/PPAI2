@@ -229,11 +229,11 @@ namespace pruebaPPAI
             {
                 if ((i % 2) == 0)
                 {
-                    ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[4]));
+                    ListaTurnos1[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[4]));
                 }
                 else
                 {
-                    ListaTurnos2[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[6]));
+                    ListaTurnos1[i].CambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, listaEstados[6]));
                 }
             }
             listaRecursosTecnologicos[1].ListaTurnos = ListaTurnos2;
