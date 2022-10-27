@@ -1,4 +1,6 @@
-﻿namespace pruebaPPAI.Entidades
+﻿using pruebaPPAI.Entidades.EstadosConcretos;
+
+namespace pruebaPPAI.Entidades
 {
     public class Turno
     {
@@ -7,6 +9,8 @@
         public DateTime fechaHoraInicio { get; set; }
         public DateTime fechaHoraFin { get; set; }
         public List<CambioEstadoTurno> CambioEstadoTurno { get; set; }
+
+        public EstadoTurno estado { get; set; }
 
         public Turno(DateTime fechaGeneracion, string diaSemana, DateTime fechaHoraInicio, DateTime fechaHoraFin)
         {
@@ -37,19 +41,24 @@
             
         }
 
-        public void reservar(DateTime fechaActual, Estado estReservado)
-        {//buscar cambioEstadoActual, para setearle la fecha de fin. Crear un cambio estado nuevo y pasarle como estado el que se encuentra en el gestor.
+        public void reservar(DateTime fechaActual, CambioEstadoTurno cambioEActual)
+        {
+            //LLAMAR AL OBJETO ESTADO DISPONIBLE, LA OPERACION RESERVAR, APLICANDO DELEGACION
+            Disponible eDisponible = new Disponible();
+            eDisponible.reservar(fechaActual, cambioEActual, this);
 
-            foreach (CambioEstadoTurno cambioEstado in CambioEstadoTurno)
-            {
-                if (cambioEstado.EsActual())
-                {
-                    cambioEstado.setFechaHasta(fechaActual);        
-                }
-            }
+            CambioEstadoTurno.Add(new CambioEstadoTurno(fechaActual, estaReservado));
 
-            CambioEstadoTurno.Add(new CambioEstadoTurno(fechaActual, estReservado));
+        }
 
+        public void agregarCambioEstado(CambioEstadoTurno nuevo) 
+        {
+            this.CambioEstadoTurno.Add(nuevo);
+        }
+
+        public void setEstado(EstadoTurno e)
+        {
+            this.estado = e;
         }
 
 

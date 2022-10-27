@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace pruebaPPAI
 {
-    internal class gestorRegistrarTurno
+    public class gestorRegistrarTurno
     { // TODO: realizar cambios:
             // gestor no debe pasar objetos ni listas a la interfaz, solamente debe pasar strings
             //modificar metodos para que cada uno envie una lista de strings para rellenar 
@@ -19,7 +19,9 @@ namespace pruebaPPAI
 
         public Usuario UsuarioLogueado { get; set; }
         public DateTime FechaActual { get; set; }
-        public Estado EstadoReservado { get; set; }
+        public EstadoTurno EstadoReservado { get; set; }
+
+        public CambioEstadoTurno CambioEstadoActual{ get; set; }
 
 
         baseDeDatos bdd = new baseDeDatos();
@@ -108,6 +110,7 @@ namespace pruebaPPAI
         {            //obtiene el turno seleccionado por el cientifico
 
             this.TurnoReservado = turnoSeleccionado;
+            this.CambioEstadoActual = turnoSeleccionado.
         }
 
         public void tomarConfirmacion(PantallaRegistrarTurnos interfaz)
@@ -126,19 +129,19 @@ namespace pruebaPPAI
 
         private void obtenerEstadoReservado()
         { //busca en la bdd el estado de turno con nombre reservado
-            foreach (Estado estado in bdd.listaEstados)
-            {
-                if (estado.EsAmbitoTurno())
-                {
-                    if (estado.EsReservado())
-                    {
-                        this.EstadoReservado = estado;
-                        break;
-                    }
-                }
+            //foreach (EstadoTurno estado in bdd.listaEstados)
+            //{
+            //    if (estado.EsAmbitoTurno())
+            //    {
+            //        if (estado.EsReservado())
+            //        {
+            //            this.EstadoReservado = estado;
+            //            break;
+            //        }
+            //    }
                 
-            }
-            RTSeleccionado.registrarReserva(TurnoReservado, FechaActual, EstadoReservado);
+            //} NO LO HACE PORQUE TIENE QUE TRAER EL ESTADO RESERVADO
+            TurnoReservado.reservar(FechaActual, CambioEstadoActual);
 
             generarNotificacion(bdd.email);
         }

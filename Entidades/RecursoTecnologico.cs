@@ -122,7 +122,7 @@ namespace pruebaPPAI.Entidades
             return "| Tipo Recurso: " + this.tipoRecurso.Nombre + "\n| Recurso Numero: " + this.numeroRT.ToString() + "\n| Modelo:" + this.modeloRT.nombre;
         }
 
-        public void registrarReserva(Turno turnoSeleccionado, DateTime fechaActual, Estado estReservado)
+        public void registrarReserva(Turno turnoSeleccionado, DateTime fechaActual, EstadoTurno estReservado)
         {//registra la reserva de un turno seleccionado por el usuario
             foreach (Turno turno in ListaTurnos)
             {
