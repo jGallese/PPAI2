@@ -45,7 +45,10 @@ namespace PPAI
         private void opcReservarTurno(object sender, EventArgs e)
         {//obtener lista de tipos de recursos, muestra y solicita que se seleccione un TR
             ges.opcReservarTurno(this);
-            
+            dgv_TiposRecursos.Visible = true;
+            btnCancelarReserva.Text = "Cancelar Reserva";
+
+
 
             solicitarSeleccionTR();
 
@@ -138,6 +141,7 @@ namespace PPAI
 
             
                 dgv_Turnos_De_fecha.Visible = true;
+                label7.Visible = true;
         }
 
         private void presentarTurnos(DateTime fechaSeleccionada)
@@ -156,7 +160,7 @@ namespace PPAI
 
             if(clickedRow.Cells[2].Value.ToString() != "Disponible") //comprueba que el turno elegido sea disponible
             {
-                MessageBox.Show("Este turno esta seleccionado, pruebe con otro");
+                MessageBox.Show("Parece que este turno esta seleccionado, pruebe con otro");
             }
             else
             {

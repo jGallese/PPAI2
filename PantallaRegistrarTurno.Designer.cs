@@ -36,8 +36,10 @@
             this.nombreTipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionTipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnCancelarReserva = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.dgv_Recursos = new PPAI.Helpers.GroupByGrid();
             this.Centro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +48,9 @@
             this.estadoRT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgv_Turnos_De_fecha = new System.Windows.Forms.DataGridView();
+            this.FechaHoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaHoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Fechas = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnConfirmarReserva = new System.Windows.Forms.Button();
@@ -56,9 +61,8 @@
             this.cmbTiposNotificacion = new System.Windows.Forms.ComboBox();
             this.dataRecurso = new System.Windows.Forms.Label();
             this.dataTurno = new System.Windows.Forms.Label();
-            this.FechaHoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaHoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -113,8 +117,9 @@
             this.dgv_TiposRecursos.RowHeadersWidth = 62;
             this.dgv_TiposRecursos.RowTemplate.Height = 33;
             this.dgv_TiposRecursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_TiposRecursos.Size = new System.Drawing.Size(500, 225);
+            this.dgv_TiposRecursos.Size = new System.Drawing.Size(666, 225);
             this.dgv_TiposRecursos.TabIndex = 1;
+            this.dgv_TiposRecursos.Visible = false;
             this.dgv_TiposRecursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarTipoRecurso);
             // 
             // idTipoRT
@@ -134,7 +139,7 @@
             this.nombreTipoRecurso.MinimumWidth = 8;
             this.nombreTipoRecurso.Name = "nombreTipoRecurso";
             this.nombreTipoRecurso.ReadOnly = true;
-            this.nombreTipoRecurso.Width = 150;
+            this.nombreTipoRecurso.Width = 300;
             // 
             // descripcionTipoRecurso
             // 
@@ -143,12 +148,13 @@
             this.descripcionTipoRecurso.MinimumWidth = 8;
             this.descripcionTipoRecurso.Name = "descripcionTipoRecurso";
             this.descripcionTipoRecurso.ReadOnly = true;
-            this.descripcionTipoRecurso.Width = 150;
+            this.descripcionTipoRecurso.Width = 300;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.btnCancelarReserva);
             this.panel2.Controls.Add(this.dgv_TiposRecursos);
             this.panel2.Controls.Add(this.btn_reg_reserva);
@@ -156,6 +162,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1527, 394);
             this.panel2.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(151, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(279, 45);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Reserva de Turno";
             // 
             // btnCancelarReserva
             // 
@@ -168,18 +184,30 @@
             this.btnCancelarReserva.Name = "btnCancelarReserva";
             this.btnCancelarReserva.Size = new System.Drawing.Size(204, 94);
             this.btnCancelarReserva.TabIndex = 2;
-            this.btnCancelarReserva.Text = "Cancelar Reserva";
+            this.btnCancelarReserva.Text = "Volver";
             this.btnCancelarReserva.UseVisualStyleBackColor = false;
             this.btnCancelarReserva.Click += new System.EventHandler(this.btnCancelarReserva_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.dgv_Recursos);
             this.panel3.Location = new System.Drawing.Point(0, 453);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1500, 300);
             this.panel3.TabIndex = 3;
+            this.panel3.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(135, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(332, 45);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Selección de Recurso";
             // 
             // dgv_Recursos
             // 
@@ -192,24 +220,24 @@
             this.marcaRT,
             this.modeloRT,
             this.estadoRT});
-            this.dgv_Recursos.Location = new System.Drawing.Point(153, 40);
+            this.dgv_Recursos.Location = new System.Drawing.Point(135, 63);
             this.dgv_Recursos.MultiSelect = false;
             this.dgv_Recursos.Name = "dgv_Recursos";
             this.dgv_Recursos.ReadOnly = true;
             this.dgv_Recursos.RowHeadersWidth = 62;
             this.dgv_Recursos.RowTemplate.Height = 33;
             this.dgv_Recursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Recursos.Size = new System.Drawing.Size(1235, 211);
+            this.dgv_Recursos.Size = new System.Drawing.Size(918, 211);
             this.dgv_Recursos.TabIndex = 0;
             this.dgv_Recursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarRT);
             // 
             // Centro
             // 
-            this.Centro.HeaderText = "CentroInv";
+            this.Centro.HeaderText = "Centro de Investigacion";
             this.Centro.MinimumWidth = 8;
             this.Centro.Name = "Centro";
             this.Centro.ReadOnly = true;
-            this.Centro.Width = 150;
+            this.Centro.Width = 250;
             // 
             // nombreRecurso
             // 
@@ -246,6 +274,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Silver;
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.dgv_Turnos_De_fecha);
             this.panel4.Controls.Add(this.dgv_Fechas);
             this.panel4.Location = new System.Drawing.Point(0, 805);
@@ -262,7 +292,7 @@
             this.FechaHoraInicio,
             this.FechaHoraFin,
             this.EstadoTurno});
-            this.dgv_Turnos_De_fecha.Location = new System.Drawing.Point(667, 23);
+            this.dgv_Turnos_De_fecha.Location = new System.Drawing.Point(691, 57);
             this.dgv_Turnos_De_fecha.MultiSelect = false;
             this.dgv_Turnos_De_fecha.Name = "dgv_Turnos_De_fecha";
             this.dgv_Turnos_De_fecha.ReadOnly = true;
@@ -271,14 +301,39 @@
             this.dgv_Turnos_De_fecha.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Turnos_De_fecha.Size = new System.Drawing.Size(662, 187);
             this.dgv_Turnos_De_fecha.TabIndex = 1;
+            this.dgv_Turnos_De_fecha.Visible = false;
             this.dgv_Turnos_De_fecha.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarTurno);
+            // 
+            // FechaHoraInicio
+            // 
+            this.FechaHoraInicio.HeaderText = "Hora Inicio";
+            this.FechaHoraInicio.MinimumWidth = 8;
+            this.FechaHoraInicio.Name = "FechaHoraInicio";
+            this.FechaHoraInicio.ReadOnly = true;
+            this.FechaHoraInicio.Width = 200;
+            // 
+            // FechaHoraFin
+            // 
+            this.FechaHoraFin.HeaderText = "Hora Fin";
+            this.FechaHoraFin.MinimumWidth = 8;
+            this.FechaHoraFin.Name = "FechaHoraFin";
+            this.FechaHoraFin.ReadOnly = true;
+            this.FechaHoraFin.Width = 200;
+            // 
+            // EstadoTurno
+            // 
+            this.EstadoTurno.HeaderText = "Estado Turno";
+            this.EstadoTurno.MinimumWidth = 8;
+            this.EstadoTurno.Name = "EstadoTurno";
+            this.EstadoTurno.ReadOnly = true;
+            this.EstadoTurno.Width = 150;
             // 
             // dgv_Fechas
             // 
             this.dgv_Fechas.AllowUserToAddRows = false;
             this.dgv_Fechas.AllowUserToDeleteRows = false;
             this.dgv_Fechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Fechas.Location = new System.Drawing.Point(135, 23);
+            this.dgv_Fechas.Location = new System.Drawing.Point(135, 57);
             this.dgv_Fechas.MultiSelect = false;
             this.dgv_Fechas.Name = "dgv_Fechas";
             this.dgv_Fechas.ReadOnly = true;
@@ -398,29 +453,26 @@
             this.dataTurno.TabIndex = 0;
             this.dataTurno.Text = "label1";
             // 
-            // FechaHoraInicio
+            // label6
             // 
-            this.FechaHoraInicio.HeaderText = "Hora Inicio";
-            this.FechaHoraInicio.MinimumWidth = 8;
-            this.FechaHoraInicio.Name = "FechaHoraInicio";
-            this.FechaHoraInicio.ReadOnly = true;
-            this.FechaHoraInicio.Width = 200;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(135, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(242, 45);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Lista de Fechas";
             // 
-            // FechaHoraFin
+            // label7
             // 
-            this.FechaHoraFin.HeaderText = "Hora Fin";
-            this.FechaHoraFin.MinimumWidth = 8;
-            this.FechaHoraFin.Name = "FechaHoraFin";
-            this.FechaHoraFin.ReadOnly = true;
-            this.FechaHoraFin.Width = 200;
-            // 
-            // EstadoTurno
-            // 
-            this.EstadoTurno.HeaderText = "Estado Turno";
-            this.EstadoTurno.MinimumWidth = 8;
-            this.EstadoTurno.Name = "EstadoTurno";
-            this.EstadoTurno.ReadOnly = true;
-            this.EstadoTurno.Width = 150;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(691, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(245, 45);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Lista de Turnos";
+            this.label7.Visible = false;
             // 
             // PantallaRegistrarTurnos
             // 
@@ -435,9 +487,12 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TiposRecursos)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Recursos)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Turnos_De_fecha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Fechas)).EndInit();
             this.panel5.ResumeLayout(false);
@@ -468,17 +523,21 @@
         public Label label2;
         public Button btnCancelaReserva;
         public Button btnConfirmarReserva;
+        private DataGridViewTextBoxColumn FechaHoraInicio;
+        private DataGridViewTextBoxColumn FechaHoraFin;
+        private DataGridViewTextBoxColumn EstadoTurno;
+        private Label label4;
         private DataGridViewTextBoxColumn idTipoRT;
         private DataGridViewTextBoxColumn nombreTipoRecurso;
         private DataGridViewTextBoxColumn descripcionTipoRecurso;
+        private Label label5;
         private DataGridViewTextBoxColumn Centro;
         private DataGridViewTextBoxColumn nombreRecurso;
         private DataGridViewTextBoxColumn marcaRT;
         private DataGridViewTextBoxColumn modeloRT;
         private DataGridViewTextBoxColumn estadoRT;
-        private DataGridViewTextBoxColumn FechaHoraInicio;
-        private DataGridViewTextBoxColumn FechaHoraFin;
-        private DataGridViewTextBoxColumn EstadoTurno;
+        private Label label7;
+        private Label label6;
         //private DataGridView dgv_Recursos;
     }
 }
