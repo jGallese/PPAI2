@@ -17,7 +17,7 @@ namespace PPAI
                                                                                                                                                                                                                                                                                                                                                                                                   public string fechaSelecc { get; set; }
         private gestorRegistrarTurno ges;
 
-        baseDeDatos bdd = new baseDeDatos();
+        
         public PantallaRegistrarTurnos()
         {
             InitializeComponent();

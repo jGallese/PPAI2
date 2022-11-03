@@ -31,7 +31,7 @@ namespace PPAI
 
         public List<CentroInvestigación> ListaCentrosInvestigacion = AD_Centros.GetCentroInvestigacion();
 
-        baseDeDatos bdd = new baseDeDatos();
+        
 
 
         public void opcReservarTurno(PantallaRegistrarTurnos pantalla)
