@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPAI.Entidades
+namespace PPAI.Helpers
 {
-    public class InterfazEmail
+    public class ObjetoPersistente
     {
-        public void enviarNotificacion() { }
-        
+        public int oid { get; set; }
     }
 }

@@ -1,10 +1,15 @@
-﻿namespace pruebaPPAI.Entidades
+﻿namespace PPAI.Entidades
 {
     public class CambioEstadoTurno
     {
         public DateTime fechaHoraDesde{ get; set; }
         public DateTime? fechaHoraHasta { get; set; }
-        public EstadoTurno estado{ get; set; }
+        public virtual EstadoTurno estado{ get; set; }
+
+        public CambioEstadoTurno()
+        {
+
+        }
         public CambioEstadoTurno(DateTime fechaHoraDesde, EstadoTurno estado)
         {
             this.fechaHoraDesde = fechaHoraDesde;

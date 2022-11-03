@@ -4,21 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pruebaPPAI.Entidades.EstadosConcretos
+namespace PPAI.Entidades.EstadosConcretos
 {
     public class Reservado : EstadoTurno
     {
         public Reservado()
         {
+            Nombre = "Reservado";
+            Descripcion = "Turno Reservado";
+            oid = 2;
         }
 
-        public void cancelarTurno() { }
+        public override void cancelarTurno() { }
 
-        public void registrarTurnoNoUsado() { }
+        public override void registrarTurnoNoUsado() { }
 
-        public void registrarInicioDeTurno() { }
+        public override void registrarInicioTurno() { }
 
-        public void cancelarTurnoPorMantCorrectivo() { }
+        public override void cancelarTurnoPorMantCorrectivo() { }
 
     }
 }

@@ -1,21 +1,27 @@
-﻿using System;
+﻿using PPAI.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pruebaPPAI.Entidades
+namespace PPAI.Entidades
 {
     public class CambioEstadoRT
     {
         public DateTime FechaHoraDesde { get; set; }
         public DateTime? FechaHoraHasta { get; set; }
-        public Estado Estado { get; set; }
-        public CambioEstadoRT(DateTime fechaHoraDesde, Estado estado)
+        public virtual EstadoRecurso estadoRecurso { get; set; }
+
+        public CambioEstadoRT()
+        {
+
+        }
+        public CambioEstadoRT(DateTime fechaHoraDesde, EstadoRecurso estadoRecurso)
         {
             this.FechaHoraDesde = fechaHoraDesde;
             this.FechaHoraHasta = null;
-            this.Estado = estado;
+            this.estadoRecurso = estadoRecurso;
         }
 
         public bool EsActual()
@@ -29,7 +35,7 @@ namespace pruebaPPAI.Entidades
 
         internal bool EsReservable()
         { // retorna true si el estado asociado alcambio de estado es reservable
-            if (this.Estado.EsReservable)
+            if (this.estadoRecurso.EsReservable)
             {
                 return true;
             }

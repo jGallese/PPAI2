@@ -1,17 +1,22 @@
-using pruebaPPAI.Entidades;
-using pruebaPPAI.Helpers;
+using PPAI;
+
+using PPAI.Entidades;
+using PPAI.Helpers;
+using System.ComponentModel;
 using System.Reflection;
 
-namespace pruebaPPAI
+namespace PPAI
 {
     public partial class PantallaRegistrarTurnos : Form
     {
+        
         public List<TipoRecurso> listaTR { get; set; }
         public List<RecursoTecnologico> ListaRecs { get; set; }
 
         public List<Turno> ListaTurnos{ get; set; }
                                                                                                                                                                                                                                                                                                                                                                                                   public string fechaSelecc { get; set; }
         private gestorRegistrarTurno ges;
+
         baseDeDatos bdd = new baseDeDatos();
         public PantallaRegistrarTurnos()
         {
@@ -25,23 +30,22 @@ namespace pruebaPPAI
 
 
         }
+        
 
         private void Form1_Load(object sender, EventArgs e) //METODO HABILITAR PANTALLA, SI SE CAMBIA EL NOMBRE SE ROMPE
         {
-            dgv_TiposRecursos.AutoGenerateColumns = false;
-            dgv_TiposRecursos.MultiSelect = false;
-            dgv_Recursos.AutoGenerateColumns = false;
-            dgv_Recursos.MultiSelect = false;
-            
+            //dgv_TiposRecursos.AutoGenerateColumns = false;
+            //dgv_TiposRecursos.MultiSelect = false;
+            //dgv_Recursos.AutoGenerateColumns = false;
+            //dgv_Recursos.MultiSelect = false;
+            opcReservarTurno(this, e);
         }
 
 
         private void opcReservarTurno(object sender, EventArgs e)
         {//obtener lista de tipos de recursos, muestra y solicita que se seleccione un TR
-            listaTR = ges.opcReservarTurno(this);
-            dgv_TiposRecursos.DataSource = listaTR;
-            dgv_TiposRecursos.Columns[0].Width = 200;
-            dgv_TiposRecursos.Columns[1].Width = 200;
+            ges.opcReservarTurno(this);
+            
 
             solicitarSeleccionTR();
 
@@ -50,9 +54,16 @@ namespace pruebaPPAI
         private void seleccionarTipoRecurso(object sender, DataGridViewCellEventArgs e)
         {
             //Toma seleccion de tipoRecurso, busca los recursos pertenecientes al tipoRecurso seleccionado y los muestra
-            DataGridViewRow clickedRow = (sender as DataGridView).Rows[e.RowIndex];
-            TipoRecurso trSel = clickedRow.DataBoundItem as TipoRecurso;
-            ges.tomarSeleccionTipoRecurso(trSel);
+            int indice = e.RowIndex;
+            DataGridViewRow filaSeleccionada = dgv_TiposRecursos.Rows[indice];
+
+            TipoRecurso trSeleccionado = new TipoRecurso();
+            trSeleccionado.oid = (int)filaSeleccionada.Cells[0].Value;
+            trSeleccionado.Nombre = filaSeleccionada.Cells[1].Value.ToString();
+            trSeleccionado.Descripcion = filaSeleccionada.Cells[2].Value.ToString();
+
+
+            ges.tomarSeleccionTipoRecurso(trSeleccionado, this);
             
 
             ges.agruparPorCI(this);
@@ -68,76 +79,7 @@ namespace pruebaPPAI
             panel3.Visible = true;
             //Muestra ventana emergente que pide seleccion de un tipo de recurso
             MessageBox.Show("Por favor, seleccione un Recurso Tecnológico de \n " + this.ges.TipoRecursoSeleccionado.GetTipoRecurso());
-            //Agregar Columnas a la tabla
-            dgv_Recursos.ColumnCount = 5;
-
-            dgv_Recursos.Columns[0].Name = "NombreCentro";
-            dgv_Recursos.Columns[0].HeaderText = "NombreCentro";
-            dgv_Recursos.Columns[0].DataPropertyName = "NombreCentro";
-            dgv_Recursos.Columns[0].Width = 200;
-
-            dgv_Recursos.Columns[1].HeaderText = "NumeroRT";
-            dgv_Recursos.Columns[1].Name = "NumeroRT";
-            dgv_Recursos.Columns[1].DataPropertyName = "NumeroRT";
-            dgv_Recursos.Columns[1].Width = 200;
-
-            dgv_Recursos.Columns[2].Name = "Marca";
-            dgv_Recursos.Columns[2].HeaderText = "Marca";
-            dgv_Recursos.Columns[2].DataPropertyName = "Marca";
-            dgv_Recursos.Columns[2].Width = 200;
-
-            dgv_Recursos.Columns[3].Name = "Modelo";
-            dgv_Recursos.Columns[3].HeaderText = "Modelo";
-            dgv_Recursos.Columns[3].DataPropertyName = "Modelo";
-            dgv_Recursos.Columns[3].Width = 200;
-
-            dgv_Recursos.Columns[4].Name = "Estado";
-            dgv_Recursos.Columns[4].HeaderText = "Estado";
-            dgv_Recursos.Columns[4].DataPropertyName = "Estado";
-            dgv_Recursos.Columns[4].Width = 200;
-
-            //traer datos del recursos tecnologicos que cumplan las condiciones
-            ListaRecs = ges.buscarRTsDelTipo();
-            dgv_Recursos.Rows.Clear();
             
-            
-            
-            //llenar la grilla
-
-            
-
-            foreach (RecursoTecnologico rt in ListaRecs)
-            {
-                string rtEstadoActual = "";
-                foreach (CambioEstadoRT cambioEstado in rt.ListaCambioEstadosRT)
-                {
-
-                    if (cambioEstado.EsActual())
-                    {
-                        rtEstadoActual = cambioEstado.Estado.Nombre;
-                    }
-                }
-
-
-                dgv_Recursos.Rows.Add(new string[] { rt.getNombreCI(bdd).Nombre, rt.numeroRT.ToString(), rt.modeloRT.getMarcaYModelo(bdd), rt.modeloRT.nombre, rtEstadoActual });
-
-
-                
-                if (rtEstadoActual == "Disponible")
-                {
-                    dgv_Recursos.Rows[ListaRecs.IndexOf(rt)].Cells[4].Style.BackColor = Color.Blue;
-                    dgv_Recursos.Rows[ListaRecs.IndexOf(rt)].Cells[4].Style.ForeColor = Color.White;
-                } else if (rtEstadoActual == "En Mantenimiento")
-                {
-                    dgv_Recursos.Rows[ListaRecs.IndexOf(rt)].Cells[4].Style.BackColor = Color.Green;
-                    dgv_Recursos.Rows[ListaRecs.IndexOf(rt)].Cells[4].Style.ForeColor = Color.White;
-                } else
-                {
-                    dgv_Recursos.Rows[ListaRecs.IndexOf(rt)].Cells[4].Style.BackColor = Color.LightGray;
-                }
-
-
-            }
 
         }
 
@@ -145,22 +87,13 @@ namespace pruebaPPAI
         private void seleccionarRT(object sender, DataGridViewCellEventArgs e)
         {
             //toma la seleccion de recurso tecnologico 
+            int indice = e.RowIndex;
+            DataGridViewRow filaSeleccionada = dgv_Recursos.Rows[indice];
 
-            DataGridViewRow clickedRow = (sender as Helpers.GroupByGrid).Rows[e.RowIndex];
-            string numeroAux = clickedRow.Cells[1].Value.ToString();
+            int nroRecurso = Int32.Parse(filaSeleccionada.Cells[1].Value.ToString());
 
-            int numeroAyuda = Int32.Parse(numeroAux);
-
-            RecursoTecnologico recSeleccionado = null;
-
-            foreach (RecursoTecnologico recurso in bdd.listaRecursosTecnologicos)
-            {
-                if (recurso.numeroRT == numeroAyuda)
-                {
-                    recSeleccionado = recurso;
-                }
-            }
-            ges.tomarSeleccionRT(recSeleccionado);
+            
+            ges.tomarSeleccionRT(nroRecurso);
 
             panel4.Visible = true;
             presentarFechas(dgv_Recursos, e);
@@ -172,58 +105,10 @@ namespace pruebaPPAI
             MessageBox.Show("Seleccione una fecha por favor");
             dgv_Turnos_De_fecha.Visible = false;
             //llena la grilla con las fechas del recurso seleccionado, aplicando colores dependiendo de la cantidad
-            ListaTurnos = ges.agruparYOrdenarTurnos();
+            ges.agruparYOrdenarTurnos(this);
             //setear la grilla con fechas
 
-            dgv_Fechas.MultiSelect = false;
-            dgv_Fechas.ColumnCount = 1;
-
-            dgv_Fechas.Columns[0].Name = "Fecha";
-            dgv_Fechas.Columns[0].Width = 150;
-            dgv_Fechas.Width = 180;
-
-            dgv_Fechas.Rows.Clear();
-
-            //for (int i = 21; i < 26; i++)
-            //{
-            //    dgv_Fechas.Rows.Add(new string[] { new DateTime(2022, 6, i).ToShortDateString() });
-            //}
-
-            foreach (Turno turno in ges.RTSeleccionado.ListaTurnos)
-            {
-                dgv_Fechas.Rows.Add(new string[] { turno.fechaHoraInicio.ToShortDateString() });
-            }
-            //pintar fechas dependiendo de las distintas disponibilidades del turno
-            for (int i = 0; i < dgv_Fechas.Rows.Count; i++)
-            {
-                // cada fecha del calendar
-
-                DataGridViewCell currFila = dgv_Fechas.Rows[i].Cells[0];
-                int contadorDispFecha = 0; // contador interno por fecha
-                foreach (Turno tur in ListaTurnos) // recorro turnos
-                {
-                    if (tur.fechaHoraInicio.Date.ToShortDateString() == currFila.Value.ToString()) //turno de la misma fecha
-                    {
-                        foreach (CambioEstadoTurno ce in tur.CambioEstadoTurno) // conseguir CE actual
-                        {
-                            if (ce.EsActual())
-                            {
-                                if (ce.estado.Nombre == "Disponible") //si es disponible, agregar 1 al contador de fecha particular
-                                {
-                                    contadorDispFecha += 1;
-                                }
-                            }
-                        }
-                    }
-
-                }
-                if (contadorDispFecha == 0)
-                {
-                    currFila.Style.BackColor = Color.Red;
-                }
-                else { currFila.Style.BackColor = Color.LightBlue; }
-
-            }       
+                  
         }
 
         private void seleccionarFecha(object sender, DataGridViewCellEventArgs e)
@@ -239,7 +124,12 @@ namespace pruebaPPAI
                 {
                     this.fechaSelecc = clickedFecha.Cells[0].Value.ToString();
                     MessageBox.Show("Ha seleccionado una fecha para la cual hay disponibilidad de turnos \nAhora, por favor, seleccione un turno");
+
+                    
                     presentarTurnos(DateTime.Parse(this.fechaSelecc));
+                    
+                
+
             }
                 else
                 {
@@ -252,68 +142,9 @@ namespace pruebaPPAI
 
         private void presentarTurnos(DateTime fechaSeleccionada)
         {   //muestra los turnitos que coincidan con la fecha seleccionada por el cientifico
-            List<Turno> listAuxTurn = new List<Turno>(); 
 
-            foreach (Turno turno in ListaTurnos)
-            { //busca de la lista de turnos total, los que coincidan con la fecha
-                if (turno.fechaHoraInicio.ToLongDateString() == fechaSeleccionada.ToLongDateString())
-                {
-                    listAuxTurn.Add(turno);
-                }
-            }
-            ListaTurnos = listAuxTurn;
-
-            //crea la tabla
-            dgv_Turnos_De_fecha.Rows.Clear();
-            dgv_Turnos_De_fecha.ColumnCount = 3;
-
-            dgv_Turnos_De_fecha.Columns[0].Name = "FechaHoraInicio";
-            dgv_Turnos_De_fecha.Columns[0].HeaderText = "Hora Inicio";
-            dgv_Turnos_De_fecha.Columns[0].Width = 200;
-
-            dgv_Turnos_De_fecha.Columns[1].Name = "FechaHoraFin";
-            dgv_Turnos_De_fecha.Columns[1].HeaderText = "Hora Fin";
-            dgv_Turnos_De_fecha.Columns[1].Width = 200;
+            ges.CargarGrillaTurnos(this, fechaSeleccionada);
             
-            dgv_Turnos_De_fecha.Columns[2].Name = "Estado";
-            dgv_Turnos_De_fecha.Columns[2].HeaderText = "Estado Del Turno";
-            dgv_Turnos_De_fecha.Columns[2].Width = 200;
-
-            //llena la tabla
-            foreach (Turno tt in listAuxTurn)
-            {
-                string ttEstadoActual = "";
-                foreach (CambioEstadoTurno cambioEstado in tt.CambioEstadoTurno)
-                {
-
-                    if (cambioEstado.EsActual())
-                    {
-                        ttEstadoActual = cambioEstado.estado.Nombre;
-                    }
-                }
-
-
-                dgv_Turnos_De_fecha.Rows.Add(new string[] { tt.fechaHoraInicio.ToShortTimeString(), tt.fechaHoraFin.ToShortTimeString(), ttEstadoActual });
-
-
-                //por cada turno de la tabla, se fija en su estado y pinta la celda
-                if (ttEstadoActual == "Disponible")
-                {
-                    dgv_Turnos_De_fecha.Rows[listAuxTurn.IndexOf(tt)].Cells[2].Style.BackColor = Color.Blue;
-                    dgv_Turnos_De_fecha.Rows[listAuxTurn.IndexOf(tt)].Cells[2].Style.ForeColor = Color.White;
-                }
-                else if (ttEstadoActual == "Con reserva pendiente de confirmacion")
-                {
-                    dgv_Turnos_De_fecha.Rows[listAuxTurn.IndexOf(tt)].Cells[2].Style.BackColor = Color.LightGray;
-
-                }
-                else if (ttEstadoActual == "Reservado")
-                {
-                    dgv_Turnos_De_fecha.Rows[listAuxTurn.IndexOf(tt)].Cells[2].Style.BackColor = Color.Red;
-                }
-
-
-            }
 
 
         }
@@ -334,7 +165,7 @@ namespace pruebaPPAI
 
                 Turno turnoSeleccionado = null;
 
-                foreach (Turno turno in ListaTurnos)
+                foreach (Turno turno in ges.listaTurnos)
                 {
                     if (turno.fechaHoraInicio == fechaSelec)
                     {
@@ -357,14 +188,14 @@ namespace pruebaPPAI
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
-            panel4.Visible = true;
+            panel4.Visible = false;
 
             panel5.Visible = true;
             cmbTiposNotificacion.Visible = false;
             label3.Visible = false;
 
-            //panel5.Location = new Point(0,0);
-            dataTurno.Text = ges.TurnoReservado.mostrarTurno();
+            panel5.Location = new Point(0,0);
+            dataTurno.Text = ges.TurnoSeleccionado.mostrarTurno();
             dataRecurso.Text = ges.RTSeleccionado.getDatos();
         }
 
@@ -394,6 +225,7 @@ namespace pruebaPPAI
             cmbTiposNotificacion.Visible = true;
             label3.Visible = true;
             MessageBox.Show("Ahora, por favor, seleccione una forma de notificacion");
+            cmbTiposNotificacion.SelectedIndex = -1;
             cmbTiposNotificacion.SelectedIndexChanged += new System.EventHandler(seleccionarTipoNotificacion);
         }
 

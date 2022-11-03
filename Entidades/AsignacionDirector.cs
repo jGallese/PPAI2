@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pruebaPPAI.Entidades
+namespace PPAI.Entidades
 {
     public class AsignacionDirector
     {
         public DateTime FechaDesde { get; set; }
         public DateTime? FechaHasta { get; set; }
-        public PersonalCientifico personalCientifico { get; set; }
+        public PPAI.Entidades.PersonalCientifico personalCientifico { get; set; }
+        
+        public AsignacionDirector()
+        {
 
+        }
         public AsignacionDirector(DateTime fechaDesde, PersonalCientifico personalCientifico)
         {
             this.FechaDesde = fechaDesde;

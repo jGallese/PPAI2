@@ -1,6 +1,9 @@
-﻿namespace pruebaPPAI.Entidades
+﻿using PPAI.ADO;
+using PPAI.Helpers;
+
+namespace PPAI.Entidades
 {
-    public class Usuario
+    public class Usuario : ObjetoPersistente
     {
         public string Nombre { get; set; }
         public string Clave { get; set; }
@@ -10,19 +13,14 @@
             this.Nombre = nombre;
             this.Clave = password;
         }
+        public Usuario()
+        {
 
-        public PersonalCientifico getCientifico(baseDeDatos bdd)
+        }
+        public PersonalCientifico getCientifico(int oidUsuario)
         { 
             //retorna el cientifico que se encuentre logueado en la base de datos
-            foreach (PersonalCientifico cientif in bdd.ListaCientificos)
-            {
-                
-                    if (this.Nombre.Equals(cientif.Usuario.Nombre))
-                    {
-                        return cientif;
-                    }
-            }
-            return null;
+            return AD_Usuarios.getPersonalLogueado(oidUsuario);
             
         }
 

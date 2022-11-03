@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI;
+using PPAI.ADO;
+using PPAI.Helpers;
 
-namespace pruebaPPAI.Entidades
+namespace PPAI.Entidades
 {
-    public class RecursoTecnologico
+    public class RecursoTecnologico : ObjetoPersistente
     {
         //Propiedades
         public int numeroRT { get; set; }
         public DateTime fechaAlta { get; set; }
-        public List<Image> imagenes { get; set; }
+        public virtual List<Image> imagenes { get; set; }
         public DateTime periodicidadMantenimientoPrev { get; set; }
         public DateTime duracionMantPrev { get; set; }
         public TimeOnly fraccionHorariosTurnos { get; set; }
@@ -19,16 +23,19 @@ namespace pruebaPPAI.Entidades
         public TipoRecurso tipoRecurso { get; set; }
 
         public Modelo modeloRT { get; set; }
-        public List<Mantenimiento>? ListaMantenimientos { get; set; }
+        public  List<Mantenimiento>? ListaMantenimientos { get; set; }
 
         public List<Turno> ListaTurnos { get; set; }
         public List<CambioEstadoRT> ListaCambioEstadosRT { get; set; }
 
-        private CentroInvestigación centroInv { get; set; }
+        //private CentroInvestigación centroInv { get; set; }
 
 
         //Constructor
+        public RecursoTecnologico()
+        {
 
+        }
         public RecursoTecnologico(int numeroRT, DateTime fechaAlta, Image imagenes, DateTime periodicidadMantenimientoPrev, DateTime duracionMantPrev, TimeOnly fraccionHorariaTurno, TipoRecurso tipoRecurso, Modelo modeloRT)
         {
             this.numeroRT = numeroRT;
@@ -48,7 +55,7 @@ namespace pruebaPPAI.Entidades
         //Metodos
         public bool esTipoRT(TipoRecurso tipoRec)
         {//retorna true si el recurso es del tipo que se pasa por parametro(el seleccionado por el usuario)
-            if (this.tipoRecurso.Equals(tipoRec))
+            if (this.tipoRecurso.oid.Equals(tipoRec.oid))
             {
                 return true;
             }
@@ -66,10 +73,11 @@ namespace pruebaPPAI.Entidades
                 if (cambioEstado.EsActual())
                 {
                     actual = cambioEstado;
+                    break;
 
                 }
             }
-            if (actual.EsReservable())
+            if ((actual != null) && actual.EsReservable())
             {
                 return true;
             }
@@ -79,11 +87,12 @@ namespace pruebaPPAI.Entidades
             }
         }
 
-        public CentroInvestigación getNombreCI(baseDeDatos bdd)
-        {//retorna el centro de investigacion al que pertenece el recurso 
-            foreach (CentroInvestigación centro in bdd.ListaCentros)
+        public CentroInvestigación getNombreCI(List<CentroInvestigación> listaDeCentros)
+        {//retorna el centro de investigacion al que pertenece el recurso
+         //
+            foreach (CentroInvestigación centro in listaDeCentros)
             {
-                foreach (RecursoTecnologico recurso  in centro.ListaRecursosTecnologicos)
+                foreach (RecursoTecnologico recurso in centro.ListaRecursosTecnologicos)
                 {
                     if (this.numeroRT.Equals(recurso.numeroRT))
                     {
@@ -94,18 +103,19 @@ namespace pruebaPPAI.Entidades
             return null;
         }
 
-        public bool estaEnMiCI(baseDeDatos bdd, PersonalCientifico cientifLogueado)
+        public bool estaEnMiCI(List<CentroInvestigación> listaCentros, PersonalCientifico cientifLogueado)
             {
             /* devuelve true si el cientifico logueado pertenece al centro de investigacion 
                 que contiene al recurso tecnologico seleccionado
              */
-            CentroInvestigación miCentro = this.getNombreCI(bdd);
+            CentroInvestigación miCentro = this.getNombreCI(listaCentros);
             return miCentro.esCientificoActivo(cientifLogueado);
             }
             
         public List<Turno> mostrarMisTurnos(DateTime fechaActual)
         {
             //busca los turnos posteriores a la fecha que se pasa como parametro(fecha actual del sistema) y retorna los mismos
+            this.ListaTurnos = AD_Turnos.getTurnosDeRecurso(this.numeroRT);
             List<Turno> ListaTurs = new List<Turno>();
             foreach(Turno turno in this.ListaTurnos)
             {
@@ -122,13 +132,14 @@ namespace pruebaPPAI.Entidades
             return "| Tipo Recurso: " + this.tipoRecurso.Nombre + "\n| Recurso Numero: " + this.numeroRT.ToString() + "\n| Modelo:" + this.modeloRT.nombre;
         }
 
-        public void registrarReserva(Turno turnoSeleccionado, DateTime fechaActual, EstadoTurno estReservado)
+        public void registrarReserva(DateTime fechaActual, Turno turnoSeleccionado)
         {//registra la reserva de un turno seleccionado por el usuario
             foreach (Turno turno in ListaTurnos)
             {
                 if (turno.Equals(turnoSeleccionado))
                 {
-                    turno.reservar(fechaActual, estReservado);
+                    turno.reservar(fechaActual);
+                    break;
                 }
             }
 

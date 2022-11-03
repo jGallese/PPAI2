@@ -1,17 +1,23 @@
-﻿using pruebaPPAI.Entidades.EstadosConcretos;
+﻿using PPAI.ADO;
+using PPAI.Entidades.EstadosConcretos;
+using PPAI.Helpers;
+using System.Runtime.CompilerServices;
 
-namespace pruebaPPAI.Entidades
+namespace PPAI.Entidades
 {
-    public class Turno
+    public class Turno : ObjetoPersistente
     {
         public DateTime FechaGeneracion { get; set; }
         public string DiaSemana { get; set; }
         public DateTime fechaHoraInicio { get; set; }
         public DateTime fechaHoraFin { get; set; }
-        public List<CambioEstadoTurno> CambioEstadoTurno { get; set; }
+        public virtual List<CambioEstadoTurno> CambioEstadoTurno { get; set; }
 
-        public EstadoTurno estado { get; set; }
-
+        public virtual EstadoTurno estado { get; set; }
+        public Turno()
+        {
+            this.CambioEstadoTurno = new List<CambioEstadoTurno>();
+        }
         public Turno(DateTime fechaGeneracion, string diaSemana, DateTime fechaHoraInicio, DateTime fechaHoraFin)
         {
             this.FechaGeneracion = fechaGeneracion;
@@ -41,13 +47,12 @@ namespace pruebaPPAI.Entidades
             
         }
 
-        public void reservar(DateTime fechaActual, CambioEstadoTurno cambioEActual)
+        public void reservar(DateTime fechaActual)
         {
             //LLAMAR AL OBJETO ESTADO DISPONIBLE, LA OPERACION RESERVAR, APLICANDO DELEGACION
-            Disponible eDisponible = new Disponible();
-            eDisponible.reservar(fechaActual, cambioEActual, this);
-
-            CambioEstadoTurno.Add(new CambioEstadoTurno(fechaActual, estaReservado));
+            this.estado.reservarTurno(fechaActual, this);
+            
+            //CambioEstadoTurno.Add(new CambioEstadoTurno(fechaActual, estaReservado));         DESCOMENTAR
 
         }
 
@@ -59,6 +64,11 @@ namespace pruebaPPAI.Entidades
         public void setEstado(EstadoTurno e)
         {
             this.estado = e;
+        }
+
+        public List<CambioEstadoTurno> getCambiosEstadoDeTurno()
+        {
+            return AD_CambiosEstadosTurnos.getCambiosEstadoDeTurno(this.oid);
         }
 
 

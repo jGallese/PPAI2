@@ -1,18 +1,18 @@
-﻿namespace pruebaPPAI.Entidades
+﻿using PPAI.Helpers;
+
+namespace PPAI.Entidades
 {
-    public class EstadoTurno
+    public class EstadoTurno : ObjetoPersistente
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public bool EsReservable { get; set; }
-        public bool EsCancelable { get; set; }
 
-        public EstadoTurno(string nombre, string descripcion, bool esReservable, bool esCancelable)
+
+        public EstadoTurno(string nombre, string descripcion)
         {
             this.Nombre = nombre;
             this.Descripcion = descripcion;
-            this.EsReservable = esReservable;
-            this.EsCancelable = esCancelable;
+            
         }
         public EstadoTurno()
         {
@@ -30,10 +30,11 @@
         }
 
         public virtual bool esReservable() { return true; }
-         
-        public virtual void crearProxCambioEstado() { } // ver valor de retorno, puede ser CambioEstadoTurno
 
-        public virtual void reservar(DateTime fechaActual, CambioEstadoTurno cambioEActual, Turno turno) { }
+        public virtual Object crearProxEstado() { return new Object(); }
+        public virtual CambioEstadoTurno crearProxCambioEstado(DateTime fechaHoraDesde, EstadoTurno estado) { return new CambioEstadoTurno(); } // ver valor de retorno, puede ser CambioEstadoTurno
+
+        public virtual void reservarTurno(DateTime fechaActual, Turno turno) { }
 
         public virtual void registrarInicioTurno() { }
         public virtual void cancelarTurno() { }
