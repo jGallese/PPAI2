@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPAI.Entidades
+namespace PPAI.Entidades.EstadosConcretos
 {
-    public class InterfazEmail
+    public class SinUso : EstadoTurno
     {
-        public void enviarNotificacion() { }
-        
+
+        public SinUso()
+        {
+
+        }
     }
 }

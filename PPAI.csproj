@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AccesoDatos\" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
   </ItemGroup>
 
 </Project>

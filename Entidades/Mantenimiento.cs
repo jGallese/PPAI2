@@ -1,4 +1,4 @@
-﻿namespace pruebaPPAI.Entidades
+﻿namespace PPAI.Entidades
 {
     public class Mantenimiento
     {
@@ -7,6 +7,10 @@
         public DateTime FechaInicioPrevista { get; set; }
         public string MotivoMantenimiento { get; set; }
 
+        public Mantenimiento()
+        {
+
+        }
         public Mantenimiento(DateTime fechaInicio, DateTime fechaInicioPrevista, string motivoMantenimiento)
         {
             this.FechaInicio = fechaInicio;

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PPAI.Helpers;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace pruebaPPAI.Entidades
+namespace PPAI.Entidades
 {
-    public class CentroInvestigación
+    public class CentroInvestigación : ObjetoPersistente 
     {
         public String Nombre { get; set; }
         public String sigla { get; set; }
@@ -21,16 +23,20 @@ namespace pruebaPPAI.Entidades
         public String reglamento { get; set; }
         public DateTime fechaAlta { get; set; }
         public DateTime tiempoAntelacionReserva { get; set; }
-        public DateTime fechaBaja { get; set; }
-        public String motivoBaja { get; set; }
+        public DateTime? fechaBaja { get; set; }
+        public String? motivoBaja { get; set; }
 
-        public List<RecursoTecnologico> ListaRecursosTecnologicos { get; set; }
+        public virtual List<RecursoTecnologico> ListaRecursosTecnologicos { get; set; }
 
-        public List<AsignacionCientifico> AsignacionCientificos { get; set; }
+        public virtual List<AsignacionCientifico> AsignacionCientificos { get; set; }
 
+        public CentroInvestigación()
+        {
+
+        }
         public CentroInvestigación(string nombre, string sigla, string direccion, string edificio, int piso, int coordenadas,
             string telefono, string correo, string caracteristicasGrales, int numeroResolucion, DateTime fechaResolucionCreacion, string reglamento,
-            DateTime fechaAlta, DateTime tiempoAntelacionReserva, DateTime fechaBaja, string motivoBaja)
+            DateTime fechaAlta, DateTime tiempoAntelacionReserva)
         {
             this.Nombre = nombre;
             this.sigla = sigla;
@@ -46,8 +52,6 @@ namespace pruebaPPAI.Entidades
             this.reglamento = reglamento;
             this.fechaAlta = fechaAlta;
             this.tiempoAntelacionReserva = tiempoAntelacionReserva;
-            this.fechaBaja = fechaBaja;
-            this.motivoBaja = motivoBaja;
             this.ListaRecursosTecnologicos = new List<RecursoTecnologico>();
             this.AsignacionCientificos = new List<AsignacionCientifico>();
         }
@@ -61,7 +65,7 @@ namespace pruebaPPAI.Entidades
         {//retorna true si el cientifico logueado pasado como parametro pertenece al centro 
             foreach (AsignacionCientifico asignacion in AsignacionCientificos)
             {
-                if (cientifLogueado.Equals(asignacion.PersonalCientifico) && asignacion.esActivo())
+                if (cientifLogueado.Legajo.Equals(asignacion.personalCientifico.Legajo) && asignacion.esActivo())
                 {
                     return true;
                 }

@@ -1,26 +1,24 @@
-﻿namespace pruebaPPAI.Entidades
+﻿using PPAI.ADO;
+using PPAI.Helpers;
+
+namespace PPAI.Entidades
 {
-    public class Modelo
+    public class Modelo : ObjetoPersistente
     {
         public string nombre { get; set; }
         public Modelo(string nombre)
         {
             this.nombre = nombre;
         }
+        public Modelo()
+        {
 
-        public String getMarcaYModelo(baseDeDatos bdd)
+        }
+        public String getMarcaYModelo()
         {//busca en la base de datos la marca correspondiente al modelo. y retorna su nombre
-            foreach (Marca marca in bdd.ListaMarcas)
-            {
-                foreach (Modelo mod in marca.modelos)
-                {
-                    if (this.nombre.Equals(mod.nombre))
-                    {
-                        return marca.Nombre;
-                    }
-                }
-            }
-            return "";
+            string res = AD_Marcas.getMarcaParticular(this.oid).Nombre;
+           
+            return res;
         }
     }
     

@@ -1,4 +1,4 @@
-namespace pruebaPPAI
+namespace PPAI
 {
     internal static class Program
     {
@@ -12,6 +12,7 @@ namespace pruebaPPAI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new PantallaRegistrarTurnos());
+            
         }
     }
 }

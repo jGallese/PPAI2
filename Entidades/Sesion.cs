@@ -1,16 +1,17 @@
-﻿using System;
+﻿using PPAI.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pruebaPPAI.Entidades
+namespace PPAI.Entidades
 {
-    public class Sesion
+    public class Sesion : ObjetoPersistente
     {
         public DateTime FechaHoraDesde { get; set; }
         public DateTime? FechaHoraHasta { get; set; }
-        public Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
     
         public Sesion(DateTime fechaHoraDesde, Usuario usuario)
         {
@@ -19,10 +20,14 @@ namespace pruebaPPAI.Entidades
             this.Usuario = usuario;
         }
 
-        public PersonalCientifico getCientificoEnSesion(baseDeDatos bdd)
+        public Sesion()
+        {
+
+        }
+        public PersonalCientifico getCientificoEnSesion()
         {
             //retorna el cientifico que se encuentra utilizando el sistema.
-            PersonalCientifico personal = this.Usuario.getCientifico(bdd);
+            PersonalCientifico personal = this.Usuario.getCientifico(this.Usuario.oid);
             return personal;
         }
     }
